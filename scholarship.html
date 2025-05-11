@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for the RAIN Robot Development and Automation & AI Machine Learning Program 2025 Scholarship. Tuition coverage for qualified applicants in Nigeria and West Africa.">
+    <meta name="keywords" content="RAIN, Robotics and Artificial Intelligence Nigeria, scholarship, robotics, automation, Python, C++, Arduino, IoT, ROS, Machine Learning, AI">
+    <meta name="author" content="Robotics and Artificial Intelligence Nigeria">
+    <meta property="og:title" content="RAIN Scholarship - RDA & AIML Programs">
+    <meta property="og:description" content="Apply for scholarship to RAIN's prestigious robotics, automation, and AI/ML programs. Value: from ₦7,700,000 - Open to qualified applicants across West Africa.">
+    <meta property="og:url" content="https://yardcode.ng/rain">
+    <meta property="og:type" content="website">
+    <title>RAIN Scholarship - Robot Development and Automation & AI Machine Learning Programs</title>
+    <style>
+        :root {
+            --primary-color: #FFD700; /* Gold yellow */
+            --secondary-color: #FFC000; /* Darker yellow */
+            --accent-color: #FFD700; /* Gold for accents */
+            --light-gray: #222222; /* Dark gray (almost black) for backgrounds */
+            --dark-gray: #111111; /* Very dark gray (almost black) */
+            --text-color: #EEEEEE; /* Light gray for text */
+            --light-text: #FFFFFF; /* White for contrast text */
+            --dark-text: #000000; /* Black for contrast text */
+            --highlight-bg: #333333; /* Lighter black for highlight boxes */
+            --max-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-gray);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-gray), #000000);
+            color: var(--primary-color);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background-color: var(--highlight-bg);
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .address-banner {
+            background-color: var(--primary-color);
+            color: var(--dark-text);
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--dark-text);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .apply-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        footer {
+            background-color: #000000;
+            color: var(--text-color);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        
+        .float-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: var(--dark-text);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .float-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        /* Adding some accent colors for icons */
+        .fas, .fab {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        /* Link styling */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        /* Section styling */
+        section {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .address-banner {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Animation for apply button */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Two-column layout for curriculum */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 0 15px;
+            min-width: 250px;
+        }
+        
+        @media (max-width: 576px) {
+            .col {
+                flex: 0 0 100%;
+            }
+        }
+        
+        /* Tab styling */
+        .tab {
+            overflow: hidden;
+            border-radius: 5px 5px 0 0;
+            background-color: var(--highlight-bg);
+            display: flex;
+        }
+        
+        .tab button {
+            background-color: inherit;
+            flex: 1;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab button:hover {
+            background-color: #555;
+        }
+        
+        .tab button.active {
+            background-color: var(--light-gray);
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+            background-color: var(--light-gray);
+            animation: fadeEffect 1s;
+        }
+        
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>RAIN 2025 Scholarship Programs</h1>
+            <p>Advance your career in robotics and AI with scholarships from Robotics and Artificial Intelligence Nigeria (RAIN)</p>
+        </div>
+    </header>
+
+    <div class="address-banner">
+        <i class="fas fa-map-marker-alt"></i> LOCATION: IBADAN, NIGERIA
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>About RAIN</h2>
+            <p>Robotics and Artificial Intelligence Nigeria (RAIN), with RC Number RC1607482, was established in 2019 to address the critical gap in skilled workforce development in Nigeria and West Africa in emerging technologies of the Fourth Industrial Revolution (4IR). Our mission is to foster innovation, build capacity, and enable technological transformation in AI, robotics, and related fields.</p>
+            
+            <div class="highlight-box">
+                <h3>RAIN Highlights</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> World-Class Recognition: Curriculum validated by global experts</li>
+                    <li><i class="fas fa-check-circle"></i> Distinguished Visitors: Hosted UN Deputy Secretary General and tech leaders</li>
+                    <li><i class="fas fa-check-circle"></i> Strategic Partnerships: MIT LaunchX, First Bank, NITDA, and more</li>
+                    <li><i class="fas fa-check-circle"></i> Proven Track Record: Over 400 trainees across 5 years</li>
+                    <li><i class="fas fa-check-circle"></i> Global Engagement: GITEX Global and UNDP collaborations</li>
+                </ul>
+            </div>
+            
+            <p>For more about our impact, watch our showcase: <a href="https://www.youtube.com/watch?v=5lSX0ggo_L4" target="_blank">RAIN Impact Video</a></p>
+        </section>
+
+        <section id="scholarship">
+            <h2>Scholarship Opportunities (Deadline May 31st 2025)</h2>
+            <p>RAIN is pleased to announce scholarships for our prestigious programs. These comprehensive one-year programs offer part tuition coverage (valued at ₦7,700,000) for successful applicants. We offer three distinct program tracks:</p>
+            
+            <div class="tab">
+                <button class="tablinks active" onclick="openProgram(event, 'RDA')">Robot Development & Automation</button>
+                <button class="tablinks" onclick="openProgram(event, 'AIML')">AI & Machine Learning</button>
+                <button class="tablinks" onclick="openProgram(event, 'Combined')">Combined Program</button>
+            </div>
+            
+            <div id="RDA" class="tabcontent" style="display: block;">
+                <h3>Robot Development and Automation (RDA)</h3>
+                <p>A hands-on 12-month program focusing on robotics design, drone technology, IoT, and embedded systems.</p>
+                <h4>Program Structure:</h4>
+                <ul>
+                    <li><strong>Weeks 1-12:</strong> Basics of robotics, IoT, and embedded systems</li>
+                    <li><strong>Weeks 13-34:</strong> Advanced robotics, drone technology, and automation</li>
+                    <li><strong>Weeks 35-49:</strong> Real-world robotics project</li>
+                    <li><strong>Weeks 50-52:</strong> Evaluation and certification</li>
+                </ul>
+            </div>
+            
+            <div id="AIML" class="tabcontent">
+                <h3>Artificial Intelligence and Machine Learning (AIML)</h3>
+                <p>A comprehensive 12-month program covering Python programming, advanced data analytics, neural networks, natural language processing, and computer vision.</p>
+                <h4>Program Structure:</h4>
+                <ul>
+                    <li><strong>Weeks 1-12:</strong> Fundamentals of AI, Python programming, and data analytics</li>
+                    <li><strong>Weeks 13-34:</strong> Advanced topics in machine learning, neural networks, computer vision, and NLP</li>
+                    <li><strong>Weeks 35-49:</strong> Capstone project tailored to societal challenges</li>
+                    <li><strong>Weeks 50-52:</strong> Performance evaluation and certification</li>
+                </ul>
+            </div>
+            
+            <div id="Combined" class="tabcontent">
+                <h3>Combined AIML and RDA Program</h3>
+                <p>A holistic 24-month course combining software and hardware expertise, tailored to produce multi-disciplinary professionals.</p>
+                <h4>Program Structure:</h4>
+                <p>This comprehensive program integrates both AIML and RDA curricula over a 24-month period, with a special focus on the integration of software intelligence with hardware implementation.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Scholarship Value</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Partial Tuition Coverage (from ₦7,700,000)</li>
+                    <li><i class="fas fa-check-circle"></i> Starter Kit Included</li>
+                    <li><i class="fas fa-check-circle"></i> Comprehensive Training (12 or 24 months)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="eligibility">
+            <h2>Eligibility Requirements</h2>
+            
+            <h3>Academic Qualifications</h3>
+            <ul>
+                <li><i class="fas fa-graduation-cap"></i> Recent graduates</li>
+                <li><i class="fas fa-award"></i> First-class degree holders with excellent references from university lecturers</li>
+                <li><i class="fas fa-university"></i> Backgrounds in Engineering, Computer Science, Computing, Mathematics, or Physical Sciences</li>
+            </ul>
+            
+            <h3>Technical Requirements</h3>
+            <ul>
+                <li><i class="fas fa-code"></i> Demonstrable knowledge of coding (especially Python, C++, or C)</li>
+                <li><i class="fas fa-robot"></i> Passion for robotics, automation, and/or artificial intelligence</li>
+                <li><i class="fas fa-laptop"></i> Must provide own laptop (16GB RAM, Core i7 recommended) and arrange accommodation in Ibadan</li>
+            </ul>
+            
+            <h3>Citizenship & Residency</h3>
+            <ul>
+                <li><i class="fas fa-globe-africa"></i> Open to any individual legally permitted to study in Nigeria</li>
+                <li><i class="fas fa-passport"></i> Not limited to Nigerian citizens, welcome to qualified candidates from across West Africa</li>
+            </ul>
+        </section>
+
+        <section id="curriculum">
+            <h2>Program Curricula</h2>
+            
+            <div class="tab">
+                <button class="tablinks active" onclick="openCurriculum(event, 'RDA-Curr')">RDA Curriculum</button>
+                <button class="tablinks" onclick="openCurriculum(event, 'AIML-Curr')">AIML Curriculum</button>
+            </div>
+            
+            <div id="RDA-Curr" class="tabcontent" style="display: block;">
+                <h3>Robot Development and Automation (RDA) Curriculum</h3>
+                
+                <h4>1st Semester (RDA)</h4>
+                <ul>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 1:</strong> Intro to AI & Robotics, No Coding AI & Prompt Engineering</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 2:</strong> Python Basics, Product Design and Development</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 3:</strong> Product Design</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 4:</strong> Microcontroller Fundamentals</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 5-6:</strong> Python for Database Management, Python for Web Development, Microsoft Excel</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 7:</strong> Internet of Things</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 8:</strong> Practical Electronics</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 9:</strong> Microcontroller Fundamentals</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 10:</strong> Robot Manufacturing and Robotics Aided Manufacturing</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 11:</strong> Python for Desktop GUI App</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 12:</strong> Git & GitHub, Cloud Services (AWS, IBM, Microsoft Azure), General Cybersecurity, Python for Chatbots</li>
+                </ul>
+                
+                <h4>2nd Semester (RDA)</h4>
+                <ul>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 1:</strong> Raspberry Pi, ROS and Controller Coordination</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 2:</strong> Techniques for Digital Twinning</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 3-4:</strong> Control Systems Fundamentals and PID Control</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 5:</strong> Theories in Neural Networks</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 6:</strong> Techniques for Computer Vision</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 7:</strong> SLAM (Simultaneous Localization and Mapping)</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 8:</strong> GAN and Computer Vision Algorithm</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 9:</strong> Techniques for Natural Language Processing</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 10:</strong> Drone System Development</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 11:</strong> Robot Arm Kinematics</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 12:</strong> Machine Learning and Intelligent Control</li>
+                </ul>
+                
+                <div class="row">
+                    <div class="col">
+                        <h4>Core Technologies Covered:</h4>
+                        <ul>
+                            <li><i class="fas fa-code"></i> Python and C++ programming</li>
+                            <li><i class="fas fa-microchip"></i> Arduino development and Practical Electronics</li>
+                            <li><i class="fas fa-network-wired"></i> Internet of Things (IoT) and Drone Development</li>
+                            <li><i class="fas fa-server"></i> Raspberry Pi and Robot arm Kinematics</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>Advanced Topics:</h4>
+                        <ul>
+                            <li><i class="fas fa-map"></i> SLAM (Simultaneous Localization and Mapping)</li>
+                            <li><i class="fas fa-robot"></i> ROS (Robot Operating System)</li>
+                            <li><i class="fas fa-brain"></i> Intelligent control systems</li>
+                            <li><i class="fas fa-cogs"></i> PID control and general control theory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="AIML-Curr" class="tabcontent">
+                <h3>Artificial Intelligence and Machine Learning (AIML) Curriculum</h3>
+                
+                <h4>1st Semester (AIML)</h4>
+                <ul>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 1:</strong> Intro to AI & Robotics, No Coding AI & Prompt Engineering</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 2:</strong> Python Basics</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 3-4:</strong> Advanced Data Analytics</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 5-6:</strong> Python for Database Management, Python for Web Development, Microsoft Excel</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 7-10:</strong> Theories in Machine Learning I, Machine Learning Algorithms I</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 11:</strong> Python for Desktop GUI App</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 12:</strong> Git & GitHub, Cloud Services (AWS, IBM, Microsoft Azure), General Cybersecurity, Python for Chatbots</li>
+                </ul>
+                
+                <h4>2nd Semester (AIML)</h4>
+                <ul>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Weeks 1-2:</strong> Unsupervised Learning</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 3:</strong> Recommender Systems</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 4:</strong> Theories in Machine Learning II, Time Series Analysis</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 5:</strong> Theories in Neural Networks</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 6:</strong> Techniques for Computer Vision</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 7:</strong> Internet of Things</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 8:</strong> GAN and Computer Vision Algorithm</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 9:</strong> Techniques for Natural Language Processing</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 10:</strong> Techniques for Large Language Model</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 11:</strong> Explainable AI</li>
+                    <li><i class="fas fa-calendar-week"></i> <strong>Week 12:</strong> AI Applications & Model Deployment</li>
+                </ul>
+                
+                <div class="row">
+                    <div class="col">
+                        <h4>Core Technologies Covered:</h4>
+                        <ul>
+                            <li><i class="fas fa-code"></i> Python programming for AI/ML</li>
+                            <li><i class="fas fa-table"></i> Advanced Data Analytics</li>
+                            <li><i class="fas fa-brain"></i> Neural Networks and Deep Learning</li>
+                            <li><i class="fas fa-comment-alt"></i> Natural Language Processing</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>Advanced Topics:</h4>
+                        <ul>
+                            <li><i class="fas fa-chart-line"></i> Time Series Analysis</li>
+                            <li><i class="fas fa-camera"></i> Computer Vision and GANs</li>
+                            <li><i class="fas fa-robot"></i> Large Language Models</li>
+                            <li><i class="fas fa-cogs"></i> Explainable AI and Model Deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="special-consideration">
+            <h2>Special Consideration</h2>
+            <p>We will provide special consideration for passionate individuals without university degrees who demonstrate exceptional aptitude and interest in robotics and AI/ML technologies.</p>
+        </section>
+
+        <section id="application">
+            <h2>Application Process</h2>
+            <ol>
+                <li>Create a 2-minute video addressing:
+                    <ul>
+                        <li><i class="fas fa-user"></i> Your background and personality</li>
+                        <li><i class="fas fa-star"></i> Why you're suitable for this scholarship</li>
+                        <li><i class="fas fa-info-circle"></i> Your knowledge of RAIN and our mission</li>
+                        <li><i class="fas fa-laptop-code"></i> Your coding experience and expertise</li>
+                        <li><i class="fas fa-chart-line"></i> How you plan to contribute to Nigeria's technological growth</li>
+                        <li><i class="fas fa-project-diagram"></i> Relevant experience (including final year projects)</li>
+                        <li><i class="fas fa-graduation-cap"></i> Which program track you're applying for (RDA, AIML, or Combined)</li>
+                    </ul>
+                </li>
+                <li>Post your video on YouTube and share the link via email to:
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> scholarships@rainigeria.com (primary)</li>
+                        <li><i class="fas fa-envelope"></i> corporate@rainigeria.com (copy)</li>
+                    </ul>
+                </li>
+                <li>Tag RAIN on our social media platforms:
+                    <ul>
+                        <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/rain_robotics/">Instagram</a></li>
+                        <li><i class="fab fa-linkedin"></i> <a href="https://ng.linkedin.com/school/robotics-artificial-intelligence-nigeria-rain">LinkedIn</a></li>
+                        <li><i class="fab fa-twitter"></i> <a href="https://x.com/RAINigeria">Twitter</a></li>
+                        <li><i class="fab fa-facebook"></i> <a href="https://facebook.com/RAINRobotics">Facebook</a></li>
+                        <li><i class="fab fa-youtube"></i> <a href="https://www.youtube.com/@rainrobotics">YouTube</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="selection">
+            <h2>Selection Process</h2>
+            <p>Shortlisted applicants will be invited for an interview where they must present:</p>
+            <ul>
+                <li><i class="fas fa-file-alt"></i> Comprehensive resume/CV</li>
+                <li><i class="fas fa-envelope-open-text"></i> Letters of recommendation</li>
+                <li><i class="fas fa-graduation-cap"></i> Academic transcripts</li>
+                <li><i class="fas fa-laptop-code"></i> Proof of coding knowledge/projects</li>
+                <li><i class="fas fa-folder-open"></i> Other supporting documents as requested</li>
+            </ul>
+        </section>
+
+        <section id="important-notes">
+            <h2>Important Notes</h2>
+            <div class="highlight-box">
+                <ul>
+                    <li><i class="fas fa-exclamation-circle"></i> The scholarship covers tuition and starter kit only</li>
+                    <li><i class="fas fa-exclamation-circle"></i> No monthly stipend provided</li>
+                    <li><i class="fas fa-exclamation-circle"></i> No accommodation provided (though RAIN can facilitate arrangements)</li>
+                    <li><i class="fas fa-exclamation-circle"></i> No laptop provided (16GB RAM, Core i7 recommended)</li>
+                    <li><i class="fas fa-exclamation-circle"></i> Training is highly hands-on with individual and group projects</li>
+                </ul>
+            </div>
+        </section>
+
+        <div style="text-align: center;">
+          <a href="mailto:scholarships@rainigeria.com" class="apply-btn animate-pulse">Email Us!</a>
+          <a href="https://rainigeria.com" class="apply-btn animate-pulse">More about RAIN!</a>
+          <a href="https://wa.me/2348114276861?text=schorlaship2025" class="apply-btn animate-pulse">Whatsapp Us!</a>
+        </div>
+
+        <div class="highlight-box" style="text-align: center;">
+            <em>Join us in advancing robotics and AI innovation in Nigeria!</em>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>For more information about RAIN and our programs, please visit our website at <a href="https://rainigeria.com">rainigeria.com</a> or contact us through our official channels.</p>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/rain_robotics/"><i class="fab fa-instagram"></i></a>
+                <a href="https://ng.linkedin.com/school/robotics-artificial-intelligence-nigeria-rain"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/@rainrobotics"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/RAINigeria"><i class="fab fa-twitter"></i></a>
+            </div>
+            
+            <p>&copy; 2025 Robotics and Artificial Intelligence Nigeria (RAIN). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="float-button" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/hide scroll button based on scroll position
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+
+        // Initialize scroll button as hidden
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('scrollTop').style.display = 'none';
+        });
+
+        // Add animation to important elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in effect for sections as they scroll into view
+            const sections = document.querySelectorAll('section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
