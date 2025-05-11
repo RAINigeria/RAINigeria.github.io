@@ -8,7 +8,7 @@
     <meta name="author" content="Robotics and Artificial Intelligence Nigeria">
     <meta property="og:title" content="RAIN Scholarship - RDA & AIML Programs">
     <meta property="og:image" content="{{ url_for('static', filename='rainlogo.jpg') }}">
-    <meta property="og:description" content="Apply for scholarship to RAIN's prestigious robotics, automation, and AI/ML programs. Value: from ₦7,700,000 - Open to qualified applicants across West Africa.">
+    <meta property="og:description" content="Apply for scholarship to RAIN's prestigious robotics, automation, and AI/ML programs. Value: up to ₦7,700,000 - Open to qualified applicants across West Africa.">
     <meta property="og:url" content="https://yardcode.ng/rain">
     <meta property="og:type" content="website">
     <title>RAIN Scholarship - Robot Development and Automation & AI Machine Learning Programs</title>
@@ -334,12 +334,18 @@
 <iframe width="420" height="315"
 src="https://www.youtube.com/embed/5lSX0ggo_L4">
 </iframe>
+            <iframe width="420" height="315"
+src="https://www.youtube.com/embed/cc-ApZPjjgI">
+</iframe>
+            <iframe width="420" height="315"
+src="https://www.youtube.com/embed/AS6gaE5Xfbw">
+</iframe>
             
         </section>
 
         <section id="scholarship">
             <h2>Scholarship Opportunities (Deadline May 31st 2025)</h2>
-            <p>RAIN is pleased to announce scholarships for our prestigious programs. These comprehensive one-year programs offer part tuition coverage (valued at ₦7,700,000) for successful applicants. We offer three distinct program tracks:</p>
+            <p>RAIN is pleased to announce scholarships for our prestigious programs. These comprehensive one-year programs offer part tuition coverage (valued up to ₦7,700,000) for successful applicants. We offer three distinct program tracks:</p>
             
             <div class="tab">
                 <button class="tablinks active" onclick="openProgram(event, 'RDA')">Robot Development & Automation</button>
@@ -664,6 +670,57 @@ src="https://www.youtube.com/embed/5lSX0ggo_L4">
                 observer.observe(section);
             });
         });
+// Program tabs functionality
+function openProgram(evt, programName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.querySelectorAll("#RDA, #AIML, #Combined");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.querySelectorAll(".tab button.tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(programName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Curriculum tabs functionality
+function openCurriculum(evt, currName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.querySelectorAll("#RDA-Curr, #AIML-Curr");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.querySelectorAll(".tab button.tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(currName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Initialize tabs on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default tabs as active
+    document.getElementById('RDA').style.display = "block";
+    document.getElementById('RDA-Curr').style.display = "block";
+});
+        
     </script>
 </body>
 </html>
