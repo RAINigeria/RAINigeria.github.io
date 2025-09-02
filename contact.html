@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact Directly</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: black;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            background: black;
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: white;
+        }
+        
+        .contact-card {
+            background: black;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        .contact-detail {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .btn {
+            background: #333;
+            color: white;
+            border: 1px solid #666;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .btn:hover {
+            background: #555;
+        }
+        
+        .btn:disabled {
+            background: #222;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        .fallback-btn {
+            background: #444;
+        }
+        
+        .fallback-btn:hover {
+            background: #666;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            color: white;
+        }
+        
+        .success {
+            background: #1a4a1a;
+            border: 1px solid #2d7d2d;
+        }
+        
+        .error {
+            background: #4a1a1a;
+            border: 1px solid #7d2d2d;
+        }
+        
+        .info {
+            background: #1a1a4a;
+            border: 1px solid #2d2d7d;
+        }
+        
+        .support-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: black;
+            border: 1px solid #333;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: white;
+        }
+        
+        .support-info h4 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Add Contact</h1>
+        
+        <div class="contact-card">
+            <div class="contact-info">
+                <h3>John Doe</h3>
+                <div class="contact-detail">
+                    <span class="icon">📞</span>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-detail">
+                    <span class="icon">📧</span>
+                    <span>john.doe@example.com</span>
+                </div>
+                <div class="contact-detail">
+                    <span class="icon">🏢</span>
+                    <span>Software Developer at TechCorp</span>
+                </div>
+            </div>
+            
+            <button id="addContactBtn" class="btn">
+                ✨ Add to Contacts (Direct)
+            </button>
+            
+            <button id="downloadVCardBtn" class="btn fallback-btn">
+                📥 Download vCard (Fallback)
+            </button>
+        </div>
+        
+        <div id="status"></div>
+        
+        <div class="support-info">
+            <h4>Browser Support Info:</h4>
+            <p><strong>Direct Contact Addition:</strong> Only works on Chrome/Edge for Android with experimental features enabled. Most browsers don't support this yet.</p>
+            <p><strong>Fallback:</strong> The vCard download works on all browsers but requires the user to manually import the file.</p>
+            <p><strong>Alternative:</strong> Some mobile browsers may prompt to open the contact in the default contacts app when clicking certain tel: or mailto: links.</p>
+        </div>
+    </div>
+
+    <script>
+        const contactData = {
+            name: 'John Doe',
+            phone: '+15551234567',
+            email: 'john.doe@example.com',
+            organization: 'TechCorp',
+            title: 'Software Developer'
+        };
+
+        // Check if the experimental Contact API is available
+        function checkContactAPISupport() {
+            return 'contacts' in navigator && 'ContactsManager' in window;
+        }
+
+        // Try to add contact directly using the experimental API
+        async function addContactDirect() {
+            const statusDiv = document.getElementById('status');
+            
+            if (!checkContactAPISupport()) {
+                statusDiv.innerHTML = '<div class="error">❌ Direct contact addition not supported in this browser. Try the vCard fallback instead.</div>';
+                return;
+            }
+
+            try {
+                statusDiv.innerHTML = '<div class="info">🔄 Attempting to add contact...</div>';
+                
+                // This is experimental and may not work
+                const contact = new Contact({
+                    name: [contactData.name],
+                    tel: [contactData.phone],
+                    email: [contactData.email],
+                    org: [contactData.organization],
+                    title: [contactData.title]
+                });
+
+                await navigator.contacts.save(contact);
+                statusDiv.innerHTML = '<div class="success">✅ Contact added successfully!</div>';
+                
+            } catch (error) {
+                console.error('Error adding contact:', error);
+                statusDiv.innerHTML = '<div class="error">❌ Failed to add contact directly. Error: ' + error.message + '</div>';
+            }
+        }
+
+        // Fallback: Generate and download vCard
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.name}
+ORG:${contactData.organization}
+TITLE:${contactData.title}
+TEL:${contactData.phone}
+EMAIL:${contactData.email}
+END:VCARD`;
+
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = ${contactData.name.replace(/\s+/g, '_')}.vcf;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '<div class="info">📥 vCard downloaded! Open the file to add to your contacts.</div>';
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const addContactBtn = document.getElementById('addContactBtn');
+            const downloadVCardBtn = document.getElementById('downloadVCardBtn');
+            
+            // Check API support and update button state
+            if (!checkContactAPISupport()) {
+                addContactBtn.disabled = true;
+                addContactBtn.textContent = '❌ Not Supported in This Browser';
+            }
+            
+            addContactBtn.addEventListener('click', addContactDirect);
+            downloadVCardBtn.addEventListener('click', downloadVCard);
+            
+            // Show initial status
+            const statusDiv = document.getElementById('status');
+            if (checkContactAPISupport()) {
+                statusDiv.innerHTML = '<div class="info">✅ Contact API detected - direct addition may work!</div>';
+            } else {
+                statusDiv.innerHTML = '<div class="info">ℹ Contact API not available - use vCard fallback</div>';
+            }
+        });
+    </script>
+</body>
+</html>
