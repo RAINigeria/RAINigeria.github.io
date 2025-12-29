@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Olusola Ayoola | Executive Speaker & Thought Leader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a3a52;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        nav a:hover {
+            color: #d4a574;
+        }
+
+        section {
+            background: white;
+            margin: 40px 0;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
+            color: #1a3a52;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #d4a574;
+            padding-bottom: 15px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 30px;
+        }
+
+        .about-grid h3 {
+            color: #1a3a52;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .about-grid ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-grid li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .about-grid li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .engagement-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-left: 5px solid #d4a574;
+            border-radius: 4px;
+        }
+
+        .engagement-item h4 {
+            color: #1a3a52;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+
+        .fees-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .fee-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f5 100%);
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid #d4a574;
+            text-align: center;
+        }
+
+        .fee-box h4 {
+            color: #1a3a52;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .fee-amount {
+            font-size: 2.2em;
+            color: #d4a574;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .fee-box p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .requirements {
+            background: #fff3e0;
+            border-left: 5px solid #d4a574;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .requirements h3 {
+            color: #1a3a52;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .req-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .req-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .req-number {
+            background: #d4a574;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .req-content h4 {
+            color: #1a3a52;
+            margin-bottom: 5px;
+        }
+
+        .req-content p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .protocol-box {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #d4a574;
+        }
+
+        .protocol-box h4 {
+            color: #1a3a52;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .protocol-box p {
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+            border-bottom-color: #d4a574;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .contact-info strong {
+            color: #d4a574;
+        }
+
+        .cta-button {
+            background: #d4a574;
+            color: #1a3a52;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #c9985f;
+        }
+
+        .testimonial {
+            border-left: 5px solid #d4a574;
+            padding: 25px;
+            background: #f8f9fa;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .about-grid,
+            .fees-grid,
+            .engagement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dr. Olusola Sayeed Ayoola</h1>
+        <p>Founder & CEO, Robotics and Artificial Intelligence Nigeria (RAIN)</p>
+        <p style="font-size: 1em; margin-top: 10px; opacity: 0.9;">Visionary Technologist | Innovation Leader | Executive Speaker</p>
+    </header>
+
+    <nav class="container">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#engagements">Engagement Types</a></li>
+            <li><a href="#fees">Speaking Fees</a></li>
+            <li><a href="#requirements">Requirements & Protocol</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>Executive Profile</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>About Dr. Ayoola</h3>
+                    <p>Dr. Olusola Sayeed Ayoola is a visionary technology leader and innovator recognized as a thought leader in the African technology ecosystem. As Founder and CEO of Robotics and Artificial Intelligence Nigeria (RAIN), he has established Africa's premier center for AI and robotics talent development, research, and product innovation.</p>
+                    <p style="margin-top: 15px;">With a strong academic foundation including a first-class degree in Electrical and Electronic Engineering from the University of Ibadan and a Master's degree from the UK, Dr. Ayoola brings decades of experience in developing transformative solutions for healthcare, national security, education, and sustainability across Africa and internationally.</p>
+                </div>
+                <div>
+                    <h3>Key Credentials</h3>
+                    <ul>
+                        <li>PhD, M.Sc in AI & Robotics</li>
+                        <li>First-Class Degree, Electrical & Electronic Engineering</li>
+                        <li>Member, Institution of Engineering Technology (MIET)</li>
+                        <li>Member, Nigerian Society of Engineers (MNSE)</li>
+                        <li>Member, Nigerian Computer Society (MNCS)</li>
+                        <li>Founder & CEO, RAIN (50+ institutional network)</li>
+                        <li>Keynote speaker at international forums</li>
+                        <li>Developer of breakthrough innovations in AI, robotics, and healthcare</li>
+                    </ul>
+                </div>
+            </div>
+            <p><strong>Request Media Kit:</strong> Professional headshots, biography, credentials, and publications available upon request for event promotion.</p>
+        </section>
+
+        <section id="engagements">
+            <h2>Engagement Opportunities</h2>
+            <p style="margin-bottom: 30px;">Dr. Ayoola is available for select high-level engagements in professional and academic settings. Typical engagements include:</p>
+            <div class="engagement-grid">
+                <div class="engagement-item">
+                    <h4>Keynote Speaker</h4>
+                    <p>Opening or closing addresses at international and national conferences, summits, and major events focused on technology, innovation, and sectoral transformation.</p>
+                </div>
+                <div class="engagement-item">
+                    <h4>Panelist & Discussant</h4>
+                    <p>Expert contributions to high-level panel discussions on AI, robotics, innovation policy, and emerging technologies impacting Africa and the globe.</p>
+                </div>
+                <div class="engagement-item">
+                    <h4>Course Facilitator</h4>
+                    <p>Training programs and workshops on AI, robotics, emerging technologies, and innovation leadership for institutions and organizations.</p>
+                </div>
+                <div class="engagement-item">
+                    <h4>Competition Judge</h4>
+                    <p>Judging and evaluation of technology competitions, innovation challenges, and academic competitions at institutional and international levels.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fees">
+            <h2>Speaking & Engagement Fees</h2>
+            <p style="margin-bottom: 30px; font-size: 1.05em;">Fee structure reflects Dr. Ayoola's international standing, expertise, and demand as a sought-after speaker and thought leader. All fees are non-negotiable and must be confirmed in advance.</p>
+
+            <div class="fees-grid">
+                <div class="fee-box">
+                    <h4>Domestic Engagements</h4>
+                    <p>Within Nigeria</p>
+                    <div class="fee-amount">₦2,500,000</div>
+                    <p>Single keynote, panel, or facilitation session</p>
+                </div>
+                <div class="fee-box">
+                    <h4>International Engagements</h4>
+                    <p>Outside Nigeria</p>
+                    <div class="fee-amount">$15,000 USD</div>
+                    <p>Single keynote, panel, or facilitation session</p>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h3>Additional Costs & Arrangements (Borne by Organizers)</h3>
+                <div class="req-item">
+                    <div class="req-number">1</div>
+                    <div class="req-content">
+                        <h4>Travel & Transportation</h4>
+                        <p>All flights (domestic or international), ground transportation, airport/hotel pickup and drop-off with professional escort arranged and prepaid by organizers.</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">2</div>
+                    <div class="req-content">
+                        <h4>Accommodation</h4>
+                        <p>Three-star hotel accommodations or higher, where accommodation is necessary. Bookings must be confirmed before event date.</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">3</div>
+                    <div class="req-content">
+                        <h4>Payment Terms</h4>
+                        <p>Full speaking fee MUST be paid to confirmed bank account minimum 7 days before event date. No exceptions. Payment after appearance is not acceptable.</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">4</div>
+                    <div class="req-content">
+                        <h4>Notice Period</h4>
+                        <p>Minimum 2 weeks advance notice required for all bookings. International engagements require minimum 4 weeks notice.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="requirements">
+            <h2>Requirements & Professional Protocol</h2>
+            
+            <div class="protocol-box">
+                <h4>🎯 Event Planning & Coordination</h4>
+                <p><strong>Contact Person:</strong> All inquiries and coordination must go through Dr. Ayoola's designated contact representative who manages calendar, availability, and booking details.</p>
+                <p><strong>Pre-Event Coordination:</strong> Event organizers must provide complete event schedule, speaker order, exact start/end times, and technical requirements at least 10 days before the event.</p>
+            </div>
+
+            <div class="protocol-box">
+                <h4>🚗 Transportation Protocol</h4>
+                <p><strong>Pickup & Escort:</strong> Professional transportation with dedicated escort must be arranged for airport/train station pickup, hotel transfer, and venue transportation.</p>
+                <p><strong>Air Travel:</strong> Business class or higher for all flights (domestic or international).</p>
+                <p><strong>Standards:</strong> Vehicles must be clean, well-maintained, and appropriate to executive level. Driver must be professional and courteous.</p>
+            </div>
+
+            <div class="protocol-box">
+                <h4>🏨 Accommodation Standards</h4>
+                <p><strong>Hotel Category:</strong> Three-star hotel or higher, where accommodation is necessary. Hotels must have good service standards and professional management.</p>
+                <p><strong>Room Preparation:</strong> Well-appointed accommodation with complimentary WiFi, work space, and amenities befitting professional status.</p>
+            </div>
+
+            <div class="protocol-box">
+                <h4>🎤 Event Protocol & Reception</h4>
+                <p><strong>VIP Reception:</strong> Dr. Ayoola must be received at venue entrance or parking area by designated senior organizer or event director.</p>
+                <p><strong>No Self-Registration:</strong> Under no circumstances should Dr. Ayoola be asked to self-register, find his own seat, or navigate the event independently.</p>
+                <p><strong>Dedicated Usher:</strong> A professional usher must be assigned to assist Dr. Ayoola throughout the event, including seating, refreshments, and transitions between sessions.</p>
+                <p><strong>Proper Introduction:</strong> Event MC or organizer must properly introduce Dr. Ayoola with full credentials and accomplishments before any remarks or appearance.</p>
+                <p><strong>Visibility & Recognition:</strong> Dr. Ayoola must be appropriately recognized during the event. Failure to properly acknowledge his participation is unacceptable.</p>
+            </div>
+
+            <div class="protocol-box">
+                <h4>📋 Event Requirements</h4>
+                <p><strong>Technical Setup:</strong> Professional audio/visual equipment, microphone, presentation display, and technical support person must be on-site.</p>
+                <p><strong>Advance Materials:</strong> Event organizers must provide event program, speaker list, and any other promotional materials at least 5 days before the event.</p>
+                <p><strong>Professionalism:</strong> Poorly organized events that lack proper planning, structure, or professional conduct will result in non-participation or cancellation.</p>
+            </div>
+
+            <div class="protocol-box">
+                <h4>⏰ Event Punctuality</h4>
+                <p><strong>Start Time:</strong> All events must start on time. Delays must not exceed 10 minutes without prior notice to Dr. Ayoola.</p>
+                <p><strong>Duration:</strong> Speaking engagements are scheduled for agreed duration only. Extensions require prior approval.</p>
+            </div>
+
+            <div class="requirements">
+                <h3 style="font-size: 1.3em; margin-top: 30px;">🚫 Unacceptable Event Characteristics</h3>
+                <p style="margin-bottom: 20px;">Dr. Ayoola will decline invitations where:</p>
+                <div class="req-item">
+                    <div class="req-number">✗</div>
+                    <div class="req-content">
+                        <p>Event planning is disorganized or lacks clear structure</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">✗</div>
+                    <div class="req-content">
+                        <p>Organizers cannot guarantee proper reception protocol and VIP treatment</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">✗</div>
+                    <div class="req-content">
+                        <p>Transportation and accommodation standards cannot be met</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">✗</div>
+                    <div class="req-content">
+                        <p>Payment cannot be guaranteed in advance</p>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <div class="req-number">✗</div>
+                    <div class="req-content">
+                        <p>Proper professional recognition and acknowledgment cannot be assured</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Booking & Inquiries</h2>
+            
+            <div class="contact-info">
+                <p style="font-size: 1.2em; margin-bottom: 20px;">For Speaking Engagements & Event Bookings</p>
+                <p><strong>Contact:</strong> RAIN Protocol Officer</p>
+                <p><strong>Email:</strong> protocol@rainigeria.com</p>
+                <p><strong>Phone:</strong> +234 811 427 6861</p>
+                <p style="margin-top: 20px; font-size: 0.95em;">All inquiries should include: event date, location, type of engagement, expected attendance, and full event details.</p>
+            </div>
+
+            <button class="cta-button">Request Media Kit</button>
+            <button class="cta-button">Submit Speaking Request</button>
+
+            <p style="margin-top: 40px; font-size: 0.9em; opacity: 0.9;">Office: RAIN, Ibadan, Nigeria | www.rainigeria.com</p>
+        </section>
+    </div>
+
+    <footer style="background: #1a3a52; color: white; text-align: center; padding: 20px; margin-top: 30px;">
+        <p>&copy; 2025 Dr. Olusola Sayeed Ayoola. All rights reserved.</p>
+    </footer>
+</body>
+</html>
