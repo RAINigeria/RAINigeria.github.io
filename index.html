@@ -45,7 +45,6 @@
 
 <!-- ═══════════════════════════════════════════════════
      STRUCTURED DATA — JSON-LD
-     Covers: EducationalOccupationalProgram + Scholarship + Organization + BreadcrumbList + FAQPage
 ═══════════════════════════════════════════════════ -->
 <script type="application/ld+json">
 {
@@ -88,101 +87,9 @@
       "name": "RAIN 2026 Scholarship Programme",
       "description": "A Part tuition scholarship programme worth ₦7,700,000 for exceptional graduates in Artificial Intelligence, Machine Learning, Robotics, and Automation. Delivered hands-on in Ibadan, Nigeria over 12–24 months.",
       "url": "https://rainigeria.com/scholarship/2026",
-      "provider": {
-        "@id": "https://rainigeria.com/#organization"
-      },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "AIML Track — Artificial Intelligence & Machine Learning",
-          "description": "12-month hands-on programme covering Python, data analytics, neural networks, computer vision, NLP, LLMs and real-world AI deployment.",
-          "price": "0",
-          "priceCurrency": "NGN",
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-01-01",
-          "validThrough": "2026-05-4",
-          "url": "https://exams.rainigeria.com/scholarship/apply"
-        },
-        {
-          "@type": "Offer",
-          "name": "RDA Track — Robot Development & Automation",
-          "description": "12-month hands-on programme covering Arduino, Raspberry Pi, IoT, drone development, ROS, SLAM, path planning and intelligent control systems.",
-          "price": "0",
-          "priceCurrency": "NGN",
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-01-01",
-          "validThrough": "2026-05-4",
-          "url": "https://exams.rainigeria.com/scholarship/apply"
-        },
-        {
-          "@type": "Offer",
-          "name": "Combined Track — AIML + RDA",
-          "description": "24-month comprehensive programme combining both AI/ML and Robotics & Automation tracks.",
-          "price": "0",
-          "priceCurrency": "NGN",
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-01-01",
-          "validThrough": "2026-05-4",
-          "url": "https://exams.rainigeria.com/scholarship/apply"
-        }
-      ],
-      "educationalCredentialAwarded": "Internationally recognised certificate in AI/ML or Robotics & Automation",
-      "timeToComplete": "P12M",
-      "occupationalCategory": "15-1299.09",
-      "programType": "Scholarship",
-      "applicationStartDate": "2026-01-01",
+      "provider": { "@id": "https://rainigeria.com/#organization" },
       "applicationDeadline": "2026-05-4",
-      "startDate": "2026",
-      "locationCreated": {
-        "@type": "Place",
-        "name": "Ibadan",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ibadan",
-          "addressRegion": "Oyo State",
-          "addressCountry": "NG"
-        }
-      },
-      "financialAidEligible": "Part tuition scholarship — open to any nationality legally permitted to study in Nigeria"
-    },
-    {
-      "@type": "Scholarship",
-      "@id": "https://rainigeria.com/scholarship/2026#scholarship",
-      "name": "RAIN 2026 Part tuition Scholarship",
-      "description": "Part tuition scholarship valued at ₦7,700,000 covering the complete RAIN AI, Machine Learning, Robotics and Automation programme in Ibadan, Nigeria.",
-      "provider": {
-        "@id": "https://rainigeria.com/#organization"
-      },
-      "amount": {
-        "@type": "MonetaryAmount",
-        "value": "7700000",
-        "currency": "NGN"
-      },
-      "applicationDeadline": "2026-05-4",
-      "url": "https://exams.rainigeria.com/scholarship/apply"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "RAIN Nigeria",
-          "item": "https://rainigeria.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Scholarships",
-          "item": "https://rainigeria.com/scholarship"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "2026 Scholarship",
-          "item": "https://rainigeria.com/scholarship/2026"
-        }
-      ]
+      "startDate": "2026"
     },
     {
       "@type": "FAQPage",
@@ -192,39 +99,15 @@
           "name": "What does the RAIN 2026 scholarship cover?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The RAIN 2026 scholarship covers Part tuition (valued at up to ₦7,700,000) and a hardware starter kit. It does not cover accommodation, a monthly stipend, or a laptop. Scholars must be physically present in Ibadan."
+            "text": "The RAIN 2026 scholarship covers Part tuition (valued at up to ₦7,700,000) and a hardware starter kit. It does not cover accommodation, a monthly stipend, or a laptop."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the deadline to apply for the RAIN 2026 scholarship?",
+          "name": "What is the screening exam scope?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The application deadline is 4 May 2026. No late entries are accepted."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is eligible for the RAIN 2026 scholarship?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Recent or near-graduates from any country who are legally permitted to study in Nigeria. Engineering, computing, maths or sciences backgrounds are preferred but not required. Demonstrable logic, coding and algorithmic intelligence."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What programmes are available under the RAIN 2026 scholarship?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Three tracks: (1) Artificial Intelligence & Machine Learning — 12 months; (2) Robot Development & Automation — 12 months; (3) Combined AIML + RDA — 24 months. All are delivered hands-on in Ibadan, Nigeria."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I apply for the RAIN 2026 scholarship?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Apply at exams.rainigeria.com/scholarship/apply. After submitting your application, a personalised screening exam link is sent to your email immediately. The exam covers Python, maths, logic, robotics and AI/ML fundamentals."
+            "text": "The screening exam is 50 multiple-choice questions in 30 minutes, drawn randomly from 5 sections: General Aptitude & Quantitative Reasoning, Logic & Problem Solving, Computational Thinking & Robotics, AI Machine Learning & Technology, and Scenario-Based Problem Solving."
           }
         }
       ]
@@ -241,8 +124,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="theme-color" content="#ffbe33">
 <meta name="msapplication-TileColor" content="#ffbe33">
-
-<!-- Favicons (update paths to your actual assets) -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -328,6 +209,34 @@ section{padding:120px 48px}
 .step-title{font-size:15px;font-weight:500;color:var(--white);margin-bottom:10px}
 .step-desc{font-size:13px;color:var(--muted);line-height:1.65}
 .step-highlight{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:1px;color:var(--gold)}
+
+/* ═══════════════════════════════════════════════════
+   EXAM SCOPE SECTION
+═══════════════════════════════════════════════════ */
+.exam-scope{background:var(--off-black);border-top:1px solid var(--border)}
+.exam-scope-inner{max-width:1100px;margin:0 auto}
+.exam-scope-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;flex-wrap:wrap;gap:24px}
+.exam-scope-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);color:var(--white);line-height:1.15}
+.exam-scope-title em{color:var(--gold);font-style:italic}
+.exam-meta{display:flex;gap:40px;align-items:flex-end}
+.exam-meta-item{text-align:right}
+.exam-meta-num{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:var(--gold);letter-spacing:2px}
+.exam-meta-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.exam-meta-divider{width:1px;height:60px;background:var(--border);align-self:center}
+.exam-sections-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);margin-bottom:40px}
+.exam-section-card{background:var(--off-black);padding:36px 28px;position:relative;overflow:hidden;transition:background .3s;cursor:default}
+.exam-section-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.exam-section-card:hover{background:#141414}
+.exam-section-card:hover::after{transform:scaleX(1)}
+.exam-section-letter{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:rgba(255,190,51,.07);margin-bottom:16px;transition:color .3s}
+.exam-section-card:hover .exam-section-letter{color:rgba(255,190,51,.13)}
+.exam-section-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.exam-section-name{font-size:14px;font-weight:500;color:var(--white);line-height:1.4}
+.exam-disclaimer{border:1px solid rgba(255,190,51,.15);padding:24px 32px;display:flex;gap:20px;align-items:flex-start;background:rgba(255,190,51,.03)}
+.exam-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.exam-disclaimer-text{font-size:13px;color:var(--muted);line-height:1.7}
+.exam-disclaimer-text strong{color:var(--text);font-weight:500}
+
 .eligibility{background:var(--off-black)}
 .elig-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .elig-left-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);color:var(--white);line-height:1.15;margin-bottom:24px}
@@ -390,12 +299,18 @@ footer{background:var(--off-black);padding:48px;display:flex;justify-content:spa
   .cta-section{padding:80px 24px}
   footer{flex-direction:column;gap:24px;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
+  .exam-sections-grid{grid-template-columns:1fr 1fr}
+  .exam-scope-header{flex-direction:column;align-items:flex-start}
+  .exam-meta{align-items:flex-start}
 }
 @media(max-width:600px){
   .steps{grid-template-columns:1fr}
   .prog-card,.curriculum-track{padding:32px 24px}
   .benefit-item{padding:28px 24px}
   .notes-inner{padding:32px 24px}
+  .exam-sections-grid{grid-template-columns:1fr}
+  .exam-section-card{padding:28px 24px}
+  .exam-meta{gap:24px}
 }
 </style>
 </head>
@@ -547,6 +462,71 @@ footer{background:var(--off-black);padding:48px;display:flex;justify-content:spa
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════
+     EXAM SCOPE SECTION
+═══════════════════════════════════════════════════ -->
+<section class="exam-scope">
+  <div class="exam-scope-inner">
+    <div class="exam-scope-header">
+      <div>
+        <div class="section-label">Screening exam</div>
+        <h2 class="exam-scope-title">What the exam<br><em>actually covers.</em></h2>
+      </div>
+      <div class="exam-meta">
+        <div class="exam-meta-item">
+          <div class="exam-meta-num">50</div>
+          <div class="exam-meta-label">Questions</div>
+        </div>
+        <div class="exam-meta-divider"></div>
+        <div class="exam-meta-item">
+          <div class="exam-meta-num">30</div>
+          <div class="exam-meta-label">Minutes</div>
+        </div>
+        <div class="exam-meta-divider"></div>
+        <div class="exam-meta-item">
+          <div class="exam-meta-num">5</div>
+          <div class="exam-meta-label">Sections</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-sections-grid">
+      <div class="exam-section-card">
+        <div class="exam-section-letter">A</div>
+        <span class="exam-section-tag">Section A</span>
+        <div class="exam-section-name">General Aptitude &amp; Quantitative Reasoning</div>
+      </div>
+      <div class="exam-section-card">
+        <div class="exam-section-letter">B</div>
+        <span class="exam-section-tag">Section B</span>
+        <div class="exam-section-name">Logic &amp; Problem Solving</div>
+      </div>
+      <div class="exam-section-card">
+        <div class="exam-section-letter">C</div>
+        <span class="exam-section-tag">Section C</span>
+        <div class="exam-section-name">Computational Thinking &amp; Robotics</div>
+      </div>
+      <div class="exam-section-card">
+        <div class="exam-section-letter">D</div>
+        <span class="exam-section-tag">Section D</span>
+        <div class="exam-section-name">AI, Machine Learning &amp; Technology</div>
+      </div>
+      <div class="exam-section-card">
+        <div class="exam-section-letter">E</div>
+        <span class="exam-section-tag">Section E</span>
+        <div class="exam-section-name">Scenario-Based Problem Solving</div>
+      </div>
+    </div>
+
+    <div class="exam-disclaimer">
+      <div class="exam-disclaimer-icon">💡</div>
+      <p class="exam-disclaimer-text">
+        <strong>Questions are drawn randomly</strong> from a large question bank, so every candidate receives a unique set. The exam is designed to assess your <strong>thinking ability and aptitude</strong> — not memorised facts. No special preparation materials are required beyond a solid understanding of the topics listed above. Brush up on basic maths and reasoning, Python fundamentals, logic puzzles, and general awareness of how AI and robotics work. The rest is you.
+      </p>
+    </div>
+  </div>
+</section>
+
 <section class="eligibility">
   <div class="elig-layout">
     <div>
@@ -612,9 +592,10 @@ footer{background:var(--off-black);padding:48px;display:flex;justify-content:spa
 
 <script>
   const obs = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}});},{threshold:.08});
-  document.querySelectorAll('.prog-card,.step,.elig-item,.benefit-item,.module-list li,.curriculum-track').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .55s ease,transform .55s ease';obs.observe(el);});
+  document.querySelectorAll('.prog-card,.step,.elig-item,.benefit-item,.module-list li,.curriculum-track,.exam-section-card').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .55s ease,transform .55s ease';obs.observe(el);});
   document.querySelectorAll('.step').forEach((el,i)=>{el.style.transitionDelay=(i*.1)+'s';});
   document.querySelectorAll('.prog-card').forEach((el,i)=>{el.style.transitionDelay=(i*.12)+'s';});
+  document.querySelectorAll('.exam-section-card').forEach((el,i)=>{el.style.transitionDelay=(i*.08)+'s';});
 </script>
 </body>
 </html>
