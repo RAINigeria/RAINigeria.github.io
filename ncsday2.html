@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAIN Training Manual — Hands On AI with Low Data</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A1628;
+  --navy2: #132040;
+  --blue: #00AEEF;
+  --blue-light: #E6F7FD;
+  --gold: #F4A261;
+  --gold-light: #FEF3E8;
+  --green: #2EC4B6;
+  --green-light: #E8FAF8;
+  --red: #E63946;
+  --red-light: #FDEAEB;
+  --purple: #7B2D8B;
+  --purple-light: #F3E8F6;
+  --grey: #F4F7FA;
+  --grey2: #E8EDF3;
+  --text: #1A2332;
+  --text2: #4A5568;
+  --text3: #718096;
+  --white: #FFFFFF;
+  --sidebar-w: 280px;
+  --step1: #00AEEF;
+  --step2: #2EC4B6;
+  --step3: #F4A261;
+  --step4: #7B2D8B;
+  --step5: #E63946;
+  --step6: #2A9D8F;
+  --step7: #E9C46A;
+  --step8: #264653;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: var(--grey); display: flex; min-height: 100vh; }
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--navy);
+  position: fixed;
+  top: 0; left: 0;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-logo {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.logo-badge {
+  background: var(--blue);
+  color: white;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.logo-sub { color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.sidebar-label {
+  padding: 20px 24px 8px;
+  color: rgba(255,255,255,0.35);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+.nav-item:hover, .nav-item.active {
+  background: rgba(255,255,255,0.07);
+  color: white;
+  border-left-color: var(--blue);
+}
+.nav-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800;
+  flex-shrink: 0;
+}
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.35);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* MAIN CONTENT */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  max-width: 100%;
+}
+
+/* COVER */
+.cover {
+  background: var(--navy);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,174,239,0.15) 0%, transparent 70%);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 200px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,162,97,0.1) 0%, transparent 70%);
+}
+.cover-tag {
+  display: inline-block;
+  background: rgba(0,174,239,0.2);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,174,239,0.3);
+  margin-bottom: 28px;
+}
+.cover h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cover h1 span { color: var(--gold); }
+.cover-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 40px;
+  font-family: 'DM Serif Display', serif;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 700px;
+}
+.cover-meta-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+.cover-meta-item .label {
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.cover-meta-item .value {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.cover-presenter {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.presenter-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 800; color: white;
+  border: 3px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+.presenter-info .name { color: white; font-weight: 700; font-size: 16px; }
+.presenter-info .role { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
+
+/* CONTENT SECTIONS */
+.content { padding: 60px; }
+.section { margin-bottom: 70px; scroll-margin-top: 30px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.section-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.section-desc {
+  color: var(--text2);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 780px;
+}
+
+/* STEP CARDS */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step-card {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  color: white;
+}
+.step-num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800;
+  flex-shrink: 0;
+}
+.step-title { font-size: 18px; font-weight: 700; }
+.step-badge {
+  margin-left: auto;
+  background: rgba(255,255,255,0.2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.step-body {
+  background: white;
+  padding: 28px;
+}
+
+/* CLICK INSTRUCTIONS */
+.click-list { list-style: none; counter-reset: clicks; }
+.click-list li {
+  counter-increment: clicks;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  transition: background 0.2s;
+}
+.click-list li:hover { background: var(--grey); }
+.click-list li::before {
+  content: counter(clicks);
+  min-width: 28px; height: 28px;
+  background: var(--navy);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* CLICK HIGHLIGHT - for specific elements */
+.click-target {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--blue-light);
+  border: 1.5px solid var(--blue);
+  color: #006fa6;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 6px;
+}
+.click-target.green {
+  background: #e8f8ef;
+  border-color: #2da44e;
+  color: #1a6b30;
+}
+.click-target.red {
+  background: var(--red-light);
+  border-color: var(--red);
+  color: #a01c26;
+}
+.click-target.gold {
+  background: var(--gold-light);
+  border-color: var(--gold);
+  color: #8a5216;
+}
+
+/* CALLOUT BOXES */
+.callout {
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.callout.tip { background: var(--green-light); border-left: 4px solid var(--green); }
+.callout.warn { background: var(--gold-light); border-left: 4px solid var(--gold); }
+.callout.info { background: var(--blue-light); border-left: 4px solid var(--blue); }
+.callout.important { background: var(--red-light); border-left: 4px solid var(--red); }
+.callout strong { font-weight: 700; }
+
+/* PILLAR CARDS */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+.pillar-card {
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+.pillar-num { font-size: 40px; font-weight: 800; opacity: 0.2; margin-bottom: 8px; color: white; }
+.pillar-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+.pillar-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+/* BROWSER MOCKUP */
+.browser-wrap {
+  background: var(--grey2);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.browser-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.browser-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* ARCHITECTURE DIAGRAM */
+.arch-wrap {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin: 24px 0;
+}
+
+/* MODULE DIVIDER */
+.module-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 50px 0 30px;
+}
+.module-divider::before, .module-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--grey2);
+}
+.module-label {
+  background: var(--navy);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* CODE BLOCK */
+.code-block {
+  background: #0d1117;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #e6edf3;
+  line-height: 1.7;
+  overflow-x: auto;
+  position: relative;
+}
+.code-block .comment { color: #8b949e; }
+.code-block .keyword { color: #ff7b72; }
+.code-block .string { color: #a5d6ff; }
+.code-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* PROMPT BOX */
+.prompt-box {
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border-left: 4px solid var(--blue);
+}
+.prompt-label {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.prompt-text {
+  color: #d4e0f0;
+  font-size: 14px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* FOOTNOTES */
+.footnotes {
+  border-top: 2px solid var(--grey2);
+  margin-top: 60px;
+  padding-top: 32px;
+}
+.footnotes h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footnote-item {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.footnote-num {
+  color: var(--blue);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.data-table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.data-table td { padding: 11px 16px; border-bottom: 1px solid var(--grey2); color: var(--text); }
+.data-table tr:hover td { background: var(--grey); }
+.data-table .free { color: #1a6b30; font-weight: 600; }
+.data-table .paid { color: #a01c26; }
+
+/* PRINT */
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .cover { padding: 40px; }
+  .content { padding: 30px; }
+}
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .main { margin-left: 0; }
+  .pillars { grid-template-columns: 1fr; }
+  .cover-meta { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR NAVIGATION -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-badge">RAIN</div>
+    <div class="logo-sub">Training Manual</div>
+  </div>
+
+  <div class="sidebar-label">Overview</div>
+  <a href="#cover" class="nav-item">
+    <div class="nav-num" style="background:#00AEEF">✦</div>
+    Introduction
+  </a>
+  <a href="#architecture" class="nav-item">
+    <div class="nav-num" style="background:#2EC4B6">⬡</div>
+    What You'll Build
+  </a>
+  <a href="#pillars" class="nav-item">
+    <div class="nav-num" style="background:#7B2D8B">◈</div>
+    The Three Pillars
+  </a>
+
+  <div class="sidebar-label">Module 1 — GitHub</div>
+  <a href="#step1" class="nav-item">
+    <div class="nav-num" style="background:#00AEEF">1</div>
+    Create GitHub Account
+  </a>
+  <a href="#step2" class="nav-item">
+    <div class="nav-num" style="background:#00AEEF">2</div>
+    Create Your Repository
+  </a>
+  <a href="#step3" class="nav-item">
+    <div class="nav-num" style="background:#00AEEF">3</div>
+    Enable GitHub Pages
+  </a>
+
+  <div class="sidebar-label">Module 2 — Your Website</div>
+  <a href="#step4" class="nav-item">
+    <div class="nav-num" style="background:#2EC4B6">4</div>
+    Build with AI
+  </a>
+  <a href="#step5" class="nav-item">
+    <div class="nav-num" style="background:#2EC4B6">5</div>
+    Custom Domain
+  </a>
+
+  <div class="sidebar-label">Module 3 — Backend</div>
+  <a href="#step6" class="nav-item">
+    <div class="nav-num" style="background:#F4A261">6</div>
+    Render Account
+  </a>
+  <a href="#step7" class="nav-item">
+    <div class="nav-num" style="background:#F4A261">7</div>
+    Connect Render → GitHub
+  </a>
+  <a href="#step8" class="nav-item">
+    <div class="nav-num" style="background:#F4A261">8</div>
+    Neon Database
+  </a>
+
+  <div class="sidebar-label">Module 4 — Services</div>
+  <a href="#step9" class="nav-item">
+    <div class="nav-num" style="background:#7B2D8B">9</div>
+    Mailtrap Email
+  </a>
+  <a href="#step10" class="nav-item">
+    <div class="nav-num" style="background:#7B2D8B">10</div>
+    Flask Server
+  </a>
+  <a href="#step11" class="nav-item">
+    <div class="nav-num" style="background:#E63946">11</div>
+    Paystack Payments
+  </a>
+  <a href="#step12" class="nav-item">
+    <div class="nav-num" style="background:#E63946">12</div>
+    Claude API Marking
+  </a>
+
+  <div class="sidebar-label">Appendix</div>
+  <a href="#expand" class="nav-item">
+    <div class="nav-num" style="background:#264653">+</div>
+    Expanding Further
+  </a>
+  <a href="#footnotes" class="nav-item">
+    <div class="nav-num" style="background:#264653">fn</div>
+    Footnotes
+  </a>
+
+  <div class="sidebar-footer">
+    NCS National Summit<br>
+    Katsina · April 15, 2026<br><br>
+    © 2026 RAIN Nigeria
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div class="cover-tag">🤖 RAIN — Official Training Manual</div>
+  <h1>Hands On AI<br>with <span>Low Data</span></h1>
+  <div class="cover-sub">Transfer Learning · Prompt Engineering · Synthetic Data</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">Event</div>
+      <div class="value">NCS National Summit on AI & Robotics</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Session</div>
+      <div class="value">Day 2 · Session 4 · Workshop</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Date & Time</div>
+      <div class="value">Wed 15 April 2026 · 12:00PM – 1:30PM</div>
+    </div>
+  </div>
+  <div class="cover-presenter">
+    <div class="presenter-avatar">OA</div>
+    <div class="presenter-info">
+      <div class="name">Dr. Olusola Ayoola MNCS</div>
+      <div class="role">CEO/Founder · Robotics and Artificial Intelligence Nigeria (RAIN) · Ibadan, Oyo State</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- INTRO -->
+<div class="section">
+  <div class="callout info">
+    <div class="callout-icon">📖</div>
+    <div><strong>How to Use This Manual:</strong> This manual is your complete click-by-click guide. Every step is numbered. Every button you need to click is highlighted in a <span class="click-target">blue box</span>. Green boxes are <span class="click-target green">action buttons</span>. Yellow boxes are <span class="click-target gold">warnings</span>. Follow every step in order. Do not skip ahead.</div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-icon">⚠️</div>
+    <div><strong>Before You Begin:</strong> You need (1) a laptop or desktop computer, (2) a working email address, (3) an internet connection. That is all. No coding experience required. No previous AI knowledge required.</div>
+  </div>
+</div>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<div class="section" id="architecture">
+  <div class="section-header">
+    <div class="section-icon" style="background:#E6F7FD">🏗️</div>
+    <h2>What You Will Build</h2>
+  </div>
+  <p class="section-desc">By the end of this session you will have set up the complete infrastructure below — a professional, AI-powered training management portal with automatic assignment marking. Every component is either free or low-cost.</p>
+
+  <div class="arch-wrap">
+    <svg width="100%" viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        </marker>
+      </defs>
+
+      <!-- GitHub Box -->
+      <rect x="20" y="160" width="140" height="80" rx="12" fill="#0d1117"/>
+      <text x="90" y="188" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">GitHub</text>
+      <text x="90" y="204" text-anchor="middle" fill="#8b949e" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Your Code Repository</text>
+      <text x="90" y="222" text-anchor="middle" fill="#58a6ff" font-size="9" font-family="Plus Jakarta Sans, sans-serif">yourusername.github.io</text>
+
+      <!-- Arrow GitHub → Render -->
+      <line x1="160" y1="200" x2="248" y2="200" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="204" y="193" text-anchor="middle" fill="#64748b" font-size="9" font-family="Plus Jakarta Sans, sans-serif">auto-deploy</text>
+
+      <!-- Render Box -->
+      <rect x="250" y="140" width="150" height="120" rx="12" fill="#46E3B7" fill-opacity="0.15" stroke="#46E3B7" stroke-width="1.5"/>
+      <text x="325" y="168" text-anchor="middle" fill="#0a5a47" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Render</text>
+      <text x="325" y="184" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Your Live Server</text>
+      <text x="325" y="204" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">(Flask / Python)</text>
+      <text x="325" y="224" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Free Tier ✓</text>
+      <text x="325" y="244" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">yourapp.render.com</text>
+
+      <!-- Neon DB -->
+      <rect x="460" y="50" width="140" height="70" rx="12" fill="#3ecf8e" fill-opacity="0.15" stroke="#3ecf8e" stroke-width="1.5"/>
+      <text x="530" y="76" text-anchor="middle" fill="#0a4a30" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Neon Database</text>
+      <text x="530" y="92" text-anchor="middle" fill="#0a4a30" font-size="9" font-family="Plus Jakarta Sans, sans-serif">PostgreSQL · Free</text>
+      <text x="530" y="107" text-anchor="middle" fill="#0a4a30" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Students · Courses · Grades</text>
+      <!-- Arrow Render → Neon -->
+      <line x1="400" y1="175" x2="458" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Mailtrap -->
+      <rect x="460" y="155" width="140" height="60" rx="12" fill="#fef3e8" stroke="#F4A261" stroke-width="1.5"/>
+      <text x="530" y="179" text-anchor="middle" fill="#8a5216" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Mailtrap</text>
+      <text x="530" y="195" text-anchor="middle" fill="#8a5216" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Email Service · Free</text>
+      <text x="530" y="208" text-anchor="middle" fill="#8a5216" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Welcome · Reset · Alerts</text>
+      <!-- Arrow Render → Mailtrap -->
+      <line x1="400" y1="200" x2="458" y2="195" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Paystack -->
+      <rect x="460" y="250" width="140" height="60" rx="12" fill="#e8edf3" stroke="#0BA4DB" stroke-width="1.5"/>
+      <text x="530" y="274" text-anchor="middle" fill="#073060" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Paystack</text>
+      <text x="530" y="290" text-anchor="middle" fill="#073060" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Nigerian Payment Gateway</text>
+      <text x="530" y="303" text-anchor="middle" fill="#073060" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Cards · USSD · Transfer</text>
+      <!-- Arrow Render → Paystack -->
+      <line x1="400" y1="230" x2="458" y2="270" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Claude API -->
+      <rect x="460" y="345" width="140" height="60" rx="12" fill="#f3e8f6" stroke="#7B2D8B" stroke-width="1.5"/>
+      <text x="530" y="369" text-anchor="middle" fill="#4a0f5a" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Claude API</text>
+      <text x="530" y="385" text-anchor="middle" fill="#4a0f5a" font-size="9" font-family="Plus Jakarta Sans, sans-serif">AI Assignment Marking</text>
+      <text x="530" y="398" text-anchor="middle" fill="#4a0f5a" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Instant · Consistent</text>
+      <!-- Arrow Render → Claude -->
+      <line x1="400" y1="240" x2="458" y2="360" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- GitHub Pages -->
+      <rect x="20" y="290" width="140" height="70" rx="12" fill="#e6f7fd" stroke="#00AEEF" stroke-width="1.5"/>
+      <text x="90" y="318" text-anchor="middle" fill="#006fa6" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">GitHub Pages</text>
+      <text x="90" y="334" text-anchor="middle" fill="#006fa6" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Your Public Website · Free</text>
+      <text x="90" y="348" text-anchor="middle" fill="#006fa6" font-size="9" font-family="Plus Jakarta Sans, sans-serif">HTML · CSS · JS</text>
+      <!-- Bracket from GitHub to GitHub Pages -->
+      <line x1="90" y1="240" x2="90" y2="288" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4 2"/>
+
+      <!-- Students -->
+      <rect x="620" y="165" width="140" height="60" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+      <text x="690" y="189" text-anchor="middle" fill="#14532d" font-size="11" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">👩‍🎓 Students</text>
+      <text x="690" y="205" text-anchor="middle" fill="#14532d" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Submit · Pay · Get Feedback</text>
+      <text x="690" y="218" text-anchor="middle" fill="#14532d" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Any browser · Any device</text>
+      <!-- Arrow Students → Render -->
+      <line x1="620" y1="195" x2="402" y2="195" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Cost label -->
+      <rect x="0" y="390" width="220" height="24" rx="6" fill="#0A1628"/>
+      <text x="110" y="406" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">💰 TOTAL MONTHLY COST: ₦0 – ₦5,000</text>
+    </svg>
+  </div>
+</div>
+
+<!-- THREE PILLARS -->
+<div class="section" id="pillars">
+  <div class="section-header">
+    <div class="section-icon" style="background:#F3E8F6">◈</div>
+    <h2>The Three Pillars of Low-Data AI</h2>
+  </div>
+  <p class="section-desc">Before we build anything, you need to understand <em>why</em> this is possible with limited data. These three techniques are what make it work.</p>
+
+  <div class="pillars">
+    <div class="pillar-card" style="background: linear-gradient(135deg, #00AEEF, #0080c0)">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Transfer Learning</div>
+      <div class="pillar-desc">Borrow the brain that someone else already trained. Take a model trained on millions of examples and adapt it to your specific, smaller task. Like hiring an experienced engineer and teaching them your company's system — instead of training someone from childhood.</div>
+    </div>
+    <div class="pillar-card" style="background: linear-gradient(135deg, #2EC4B6, #1a8a82)">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Prompt Engineering</div>
+      <div class="pillar-desc">Get maximum intelligence from existing AI by crafting precise instructions. A well-written prompt can replace months of model training. No code required. No dataset required. Just the right words, in the right structure.</div>
+    </div>
+    <div class="pillar-card" style="background: linear-gradient(135deg, #7B2D8B, #4a1256)">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Synthetic Data</div>
+      <div class="pillar-desc">When you don't have enough real data — generate it. Use AI to create realistic training examples. Especially powerful in Africa where large labelled datasets for our languages, crops, and diseases rarely exist.</div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-icon">💡</div>
+    <div><strong>Key Insight:</strong> These three techniques together mean you can build functional, useful AI systems without a supercomputer, without millions of naira, and without a PhD. Everything in this workshop uses free or near-free tools. The only investment required is your time and your curiosity.</div>
+  </div>
+
+  <!-- Transfer Learning diagram -->
+  <div class="arch-wrap">
+    <p style="font-size:12px;font-weight:700;color:#718096;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Transfer Learning — Visual Explanation</p>
+    <svg width="100%" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#00AEEF" stroke-width="1.5" stroke-linecap="round"/>
+        </marker>
+      </defs>
+      <!-- Pre-trained model -->
+      <rect x="20" y="60" width="180" height="100" rx="12" fill="#0A1628"/>
+      <text x="110" y="90" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Trained on</text>
+      <text x="110" y="106" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">500 Million</text>
+      <text x="110" y="122" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Examples</text>
+      <text x="110" y="142" text-anchor="middle" fill="#58a6ff" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Pre-trained Model</text>
+      <!-- Arrow -->
+      <line x1="202" y1="110" x2="288" y2="110" stroke="#00AEEF" stroke-width="2" marker-end="url(#arr2)"/>
+      <text x="245" y="100" text-anchor="middle" fill="#00AEEF" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Fine-tune with</text>
+      <text x="245" y="113" text-anchor="middle" fill="#00AEEF" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">YOUR data</text>
+      <!-- Your data box -->
+      <rect x="290" y="75" width="130" height="70" rx="12" fill="#F4A261" fill-opacity="0.2" stroke="#F4A261" stroke-width="1.5"/>
+      <text x="355" y="101" text-anchor="middle" fill="#8a5216" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Your 500</text>
+      <text x="355" y="117" text-anchor="middle" fill="#8a5216" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Examples</text>
+      <text x="355" y="133" text-anchor="middle" fill="#8a5216" font-size="9" font-family="Plus Jakarta Sans, sans-serif">(local language / crop)</text>
+      <!-- Arrow 2 -->
+      <line x1="422" y1="110" x2="498" y2="110" stroke="#00AEEF" stroke-width="2" marker-end="url(#arr2)"/>
+      <!-- Result -->
+      <rect x="500" y="55" width="180" height="110" rx="12" fill="#2EC4B6" fill-opacity="0.15" stroke="#2EC4B6" stroke-width="1.5"/>
+      <text x="590" y="83" text-anchor="middle" fill="#0a5a47" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Your Custom</text>
+      <text x="590" y="100" text-anchor="middle" fill="#0a5a47" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Specialist AI</text>
+      <text x="590" y="120" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Hausa NLP Model</text>
+      <text x="590" y="134" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">or Crop Disease Detector</text>
+      <text x="590" y="150" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">or Student Assessor</text>
+      <!-- Labels at bottom -->
+      <text x="110" y="188" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Built by OpenAI / Google / Meta</text>
+      <text x="355" y="188" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Provided by YOU</text>
+      <text x="590" y="188" text-anchor="middle" fill="#2EC4B6" font-size="9" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Owned by YOU ✓</text>
+    </svg>
+  </div>
+</div>
+
+<!-- MODULE 1 DIVIDER -->
+<div class="module-divider"><div class="module-label" style="background:#00AEEF">Module 1 — GitHub Setup</div></div>
+
+<!-- STEP 1: CREATE GITHUB ACCOUNT -->
+<div class="step-card" id="step1">
+  <div class="step-header" style="background: linear-gradient(135deg, #00AEEF, #0070b8)">
+    <div class="step-num">1</div>
+    <div class="step-title">Create Your GitHub Account</div>
+    <div class="step-badge">~5 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">GitHub is the home of your code. It is also the platform that will host your public website for free. Think of it as Google Drive — but for code. Everything you build goes here first.</p>
+
+    <div class="callout info">
+      <div class="callout-icon">ℹ️</div>
+      <div><strong>What is GitHub?</strong> GitHub is a website where developers store and share code. Over 100 million developers use it worldwide. It is owned by Microsoft. The basic account is completely free and gives you everything we need today.<sup style="color:#00AEEF">[1]</sup></div>
+    </div>
+
+    <div class="browser-wrap">
+      <div class="browser-label">GitHub Sign-Up Page — github.com</div>
+      <svg width="100%" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+        <!-- Browser chrome -->
+        <rect x="0" y="0" width="720" height="36" rx="8" fill="#e8edf3"/>
+        <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+        <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+        <circle cx="60" cy="18" r="6" fill="#28c840"/>
+        <rect x="90" y="8" width="440" height="20" fill="white" rx="4"/>
+        <text x="310" y="22" text-anchor="middle" font-size="11" fill="#666" font-family="Plus Jakarta Sans, sans-serif">https://github.com/signup</text>
+        <!-- Page BG -->
+        <rect x="0" y="36" width="720" height="404" fill="#0d1117"/>
+        <!-- GitHub Nav -->
+        <rect x="0" y="36" width="720" height="52" fill="#161b22"/>
+        <text x="30" y="68" font-size="24" fill="white" font-family="sans-serif">⌥</text>
+        <text x="60" y="68" font-size="13" fill="white" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">GitHub</text>
+        <!-- Sign In button top right -->
+        <rect x="620" y="50" width="80" height="26" rx="6" fill="transparent" stroke="#30363d" stroke-width="1"/>
+        <text x="660" y="67" text-anchor="middle" font-size="11" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">Sign in</text>
+        <!-- Main content -->
+        <text x="360" y="120" text-anchor="middle" font-size="26" fill="white" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">Join GitHub today</text>
+        <text x="360" y="142" text-anchor="middle" font-size="12" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Create your account — it's free</text>
+        <!-- Form box -->
+        <rect x="180" y="158" width="360" height="240" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <!-- Email field -->
+        <text x="200" y="183" font-size="11" fill="#c9d1d9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Email address *</text>
+        <rect x="200" y="188" width="320" height="32" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+        <text x="212" y="208" font-size="11" fill="#484f58" font-family="Plus Jakarta Sans, sans-serif">yourname@gmail.com</text>
+        <!-- Password field -->
+        <text x="200" y="236" font-size="11" fill="#c9d1d9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Create a password *</text>
+        <rect x="200" y="241" width="320" height="32" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+        <text x="212" y="261" font-size="11" fill="#484f58" font-family="Plus Jakarta Sans, sans-serif">Min. 8 characters</text>
+        <!-- Username field -->
+        <text x="200" y="289" font-size="11" fill="#c9d1d9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Enter a username *</text>
+        <rect x="200" y="294" width="320" height="32" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+        <text x="212" y="314" font-size="11" fill="#484f58" font-family="Plus Jakarta Sans, sans-serif">e.g. dr-ayoola-rain</text>
+        <!-- Submit button -->
+        <rect x="200" y="342" width="320" height="38" rx="6" fill="#2da44e"/>
+        <text x="360" y="365" text-anchor="middle" font-size="13" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Continue →</text>
+        <!-- Animated click ring on Continue button -->
+        <rect x="200" y="342" width="320" height="38" rx="6" fill="none" stroke="#00AEEF" stroke-width="3" stroke-dasharray="6 3" opacity="0.8"/>
+        <!-- Arrow pointing to button -->
+        <text x="560" y="362" font-size="11" fill="#00AEEF" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">← CLICK THIS</text>
+        <line x1="555" y1="361" x2="524" y2="361" stroke="#00AEEF" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Username note -->
+        <text x="200" y="405" font-size="10" fill="#F4A261" font-family="Plus Jakarta Sans, sans-serif">⚠ Your username becomes part of your website URL. Choose carefully!</text>
+      </svg>
+    </div>
+
+    <ol class="click-list">
+      <li>Open your browser and type <strong>github.com</strong> in the address bar. Press Enter.</li>
+      <li>On the GitHub homepage, click the <span class="click-target green">Sign up</span> button in the top-right corner of the page.</li>
+      <li>In the <strong>Email address</strong> field, type your email address (Gmail works perfectly).</li>
+      <li>In the <strong>Password</strong> field, create a password of at least 8 characters. Write it down somewhere safe — you will need it again.</li>
+      <li>In the <strong>Username</strong> field, choose your username carefully. This will become part of your website address. Use something professional like <strong>drAyoolaRAIN</strong> or your institute's name. <em>No spaces allowed — use hyphens instead.</em></li>
+      <li>Click the <span class="click-target green">Continue →</span> button.</li>
+      <li>GitHub will show you a small puzzle to confirm you are human. Complete it (usually drag a piece or click a pattern).</li>
+      <li>Click <span class="click-target green">Create account</span>.</li>
+      <li>GitHub will send a verification code to your email. Open your email, find the code (6 digits), and type it into the box on screen.</li>
+      <li>GitHub will ask "How many people will be using GitHub?" Select <span class="click-target">Just me</span>.</li>
+      <li>It may ask about your role. Select <span class="click-target">Teacher</span> or <span class="click-target">Student</span> — this can unlock free premium features for educators.<sup style="color:#00AEEF">[2]</sup></li>
+      <li>Select the <span class="click-target">Free</span> plan. Click <span class="click-target green">Continue for free</span>.</li>
+      <li>You are now inside GitHub. Welcome! 🎉</li>
+    </ol>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div><strong>Username Warning:</strong> Your username cannot easily be changed later and will appear in your website's URL. Avoid numbers, underscores, or anything unprofessional. Example of a good username: <strong>rain-institute</strong> or <strong>olusola-ayoola</strong>. This becomes: <em>rain-institute.github.io</em></div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2: CREATE REPOSITORY -->
+<div class="step-card" id="step2">
+  <div class="step-header" style="background: linear-gradient(135deg, #0080c0, #005a8a)">
+    <div class="step-num">2</div>
+    <div class="step-title">Create Your Special Repository</div>
+    <div class="step-badge">~5 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">A repository (repo) is like a folder for your project. We are going to create one with a very specific name that tells GitHub to automatically turn it into a public website.</p>
+
+    <div class="callout important">
+      <div class="callout-icon">🔴</div>
+      <div><strong>Critical:</strong> The repository name must be exactly: <code style="background:#1a1a2e;color:#a5d6ff;padding:2px 8px;border-radius:4px;font-size:13px;">YOURUSERNAME.github.io</code> — replacing YOURUSERNAME with your actual GitHub username. If you type it wrongly, the website will NOT work. Double-check every character.</div>
+    </div>
+
+    <div class="browser-wrap">
+      <div class="browser-label">Creating a New Repository — github.com/new</div>
+      <svg width="100%" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="720" height="36" rx="8" fill="#e8edf3"/>
+        <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+        <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+        <circle cx="60" cy="18" r="6" fill="#28c840"/>
+        <rect x="90" y="8" width="440" height="20" fill="white" rx="4"/>
+        <text x="310" y="22" text-anchor="middle" font-size="11" fill="#666" font-family="Plus Jakarta Sans, sans-serif">https://github.com/new</text>
+        <rect x="0" y="36" width="720" height="384" fill="#0d1117"/>
+        <rect x="0" y="36" width="720" height="50" fill="#161b22" stroke="#30363d" stroke-width="0" />
+        <text x="30" y="66" font-size="13" fill="white" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">⌥ GitHub</text>
+
+        <!-- Page content -->
+        <text x="60" y="120" font-size="20" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Create a new repository</text>
+
+        <!-- Owner / repo name row -->
+        <text x="60" y="158" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Owner</text>
+        <text x="260" y="158" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Repository name</text>
+        <rect x="60" y="163" width="160" height="34" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <text x="80" y="184" font-size="12" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">drAyoolaRAIN ▾</text>
+        <text x="230" y="184" font-size="16" fill="#30363d" font-family="Plus Jakarta Sans, sans-serif">/</text>
+        <rect x="248" y="163" width="260" height="34" rx="6" fill="#161b22" stroke="#00AEEF" stroke-width="2"/>
+        <text x="260" y="184" font-size="12" fill="#a5d6ff" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">drAyoolaRAIN.github.io</text>
+        <!-- Highlight ring -->
+        <rect x="248" y="163" width="260" height="34" rx="6" fill="none" stroke="#00AEEF" stroke-width="2.5" opacity="0.5"/>
+        <text x="520" y="184" font-size="11" fill="#00AEEF" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">← TYPE THIS EXACTLY</text>
+        <!-- Green tick -->
+        <text x="260" y="210" font-size="10" fill="#2da44e" font-family="Plus Jakarta Sans, sans-serif">✓  drAyoolaRAIN.github.io is available.</text>
+
+        <!-- Public/Private -->
+        <circle cx="72" cy="248" r="8" fill="none" stroke="#30363d" stroke-width="2"/>
+        <circle cx="72" cy="248" r="4" fill="#58a6ff"/>
+        <text x="88" y="252" font-size="12" fill="white" font-family="Plus Jakarta Sans, sans-serif">Public</text>
+        <text x="88" y="266" font-size="10" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Anyone can see this repository.</text>
+        <circle cx="72" cy="285" r="8" fill="none" stroke="#30363d" stroke-width="2"/>
+        <text x="88" y="289" font-size="12" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Private</text>
+
+        <!-- Add README checkbox -->
+        <rect x="62" y="322" width="14" height="14" rx="3" fill="#2da44e"/>
+        <text x="64" y="333" font-size="10" fill="white" font-family="Plus Jakarta Sans, sans-serif">✓</text>
+        <text x="84" y="333" font-size="12" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">Add a README file</text>
+
+        <!-- Create button -->
+        <rect x="60" y="360" width="200" height="38" rx="6" fill="#2da44e"/>
+        <text x="160" y="383" text-anchor="middle" font-size="13" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Create repository</text>
+        <rect x="60" y="360" width="200" height="38" rx="6" fill="none" stroke="#00AEEF" stroke-width="3" stroke-dasharray="5 3"/>
+        <text x="278" y="383" font-size="11" fill="#00AEEF" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">← CLICK THIS LAST</text>
+      </svg>
+    </div>
+
+    <ol class="click-list">
+      <li>Once logged in, look for the <strong>+</strong> icon in the top-right corner of GitHub. Click it.</li>
+      <li>A dropdown menu appears. Click <span class="click-target">New repository</span>.</li>
+      <li>Under <strong>Repository name</strong>, type exactly: <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:13px;">YOURUSERNAME.github.io</code> — where YOURUSERNAME is your actual GitHub username. So if your username is <em>rain-institute</em>, type <em>rain-institute.github.io</em>.</li>
+      <li>Below the name field you should see a green message: <em>"✓ [name] is available."</em> This confirms your name is typed correctly.</li>
+      <li>Under visibility, select <span class="click-target">Public</span>. This is required for free GitHub Pages hosting.</li>
+      <li>Scroll down and tick the checkbox next to <span class="click-target">Add a README file</span>. This creates the repository with at least one file inside it (GitHub requires at least one file).</li>
+      <li>Click the green <span class="click-target green">Create repository</span> button at the bottom.</li>
+      <li>GitHub will take you to your new repository page. You will see a single file called README.md. Your repository is created! ✓</li>
+    </ol>
+  </div>
+</div>
+
+<!-- STEP 3: GITHUB PAGES -->
+<div class="step-card" id="step3">
+  <div class="step-header" style="background: linear-gradient(135deg, #004a70, #002e48)">
+    <div class="step-num">3</div>
+    <div class="step-title">Enable GitHub Pages — Your Free Website</div>
+    <div class="step-badge">~3 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">GitHub Pages turns your repository into a live public website — automatically. Once enabled, any HTML file you add to your repository will be instantly visible at <strong>yourusername.github.io</strong> to anyone in the world.</p>
+
+    <div class="browser-wrap">
+      <div class="browser-label">GitHub Pages Settings — Settings → Pages</div>
+      <svg width="100%" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="720" height="36" rx="8" fill="#e8edf3"/>
+        <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+        <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+        <circle cx="60" cy="18" r="6" fill="#28c840"/>
+        <rect x="90" y="8" width="440" height="20" fill="white" rx="4"/>
+        <text x="310" y="22" text-anchor="middle" font-size="11" fill="#666" font-family="Plus Jakarta Sans, sans-serif">github.com / drAyoolaRAIN / drAyoolaRAIN.github.io / settings / pages</text>
+        <rect x="0" y="36" width="720" height="364" fill="#0d1117"/>
+        <!-- Left sidebar of GitHub settings -->
+        <rect x="0" y="36" width="180" height="364" fill="#161b22" stroke="#30363d" stroke-width="0"/>
+        <text x="20" y="80" font-size="12" fill="white" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Settings</text>
+        <text x="20" y="105" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">General</text>
+        <text x="20" y="125" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Access</text>
+        <text x="20" y="145" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Code and automation</text>
+        <!-- Pages highlighted in sidebar -->
+        <rect x="0" y="158" width="180" height="26" fill="#0d1117"/>
+        <rect x="0" y="158" width="3" height="26" fill="#00AEEF"/>
+        <text x="20" y="175" font-size="11" fill="#00AEEF" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">🌐 Pages</text>
+        <text x="20" y="200" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Security</text>
+
+        <!-- Main content area -->
+        <text x="210" y="80" font-size="18" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">GitHub Pages</text>
+
+        <!-- Site URL box (after setup) -->
+        <rect x="210" y="95" width="480" height="48" rx="8" fill="#1f3a1f" stroke="#2da44e" stroke-width="1"/>
+        <text x="228" y="114" font-size="11" fill="#2da44e" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">✓  Your site is live at:</text>
+        <text x="228" y="132" font-size="12" fill="#58a6ff" font-family="Plus Jakarta Sans, sans-serif" text-decoration="underline">https://drAyoolaRAIN.github.io</text>
+
+        <!-- Branch section -->
+        <text x="210" y="170" font-size="13" fill="white" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Build and deployment</text>
+        <text x="210" y="188" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Source</text>
+        <rect x="210" y="194" width="180" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <text x="226" y="214" font-size="11" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">Deploy from a branch  ▾</text>
+
+        <text x="210" y="244" font-size="11" fill="#8b949e" font-family="Plus Jakarta Sans, sans-serif">Branch</text>
+        <rect x="210" y="250" width="140" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <text x="226" y="270" font-size="11" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">main  ▾</text>
+        <rect x="358" y="250" width="100" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <text x="374" y="270" font-size="11" fill="#c9d1d9" font-family="Plus Jakarta Sans, sans-serif">/ (root)  ▾</text>
+
+        <!-- Save button -->
+        <rect x="466" y="250" width="60" height="32" rx="6" fill="#2da44e"/>
+        <text x="496" y="270" text-anchor="middle" font-size="11" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Save</text>
+        <rect x="466" y="250" width="60" height="32" rx="6" fill="none" stroke="#00AEEF" stroke-width="2.5" stroke-dasharray="4 2"/>
+        <text x="540" y="270" font-size="11" fill="#00AEEF" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">← CLICK TO SAVE</text>
+
+        <!-- Navigation arrows -->
+        <text x="210" y="324" font-size="11" fill="#F4A261" font-family="Plus Jakarta Sans, sans-serif">Step 1: Click "Settings" tab (top of repository page)</text>
+        <text x="210" y="344" font-size="11" fill="#F4A261" font-family="Plus Jakarta Sans, sans-serif">Step 2: Scroll down left sidebar → click "Pages"</text>
+        <text x="210" y="364" font-size="11" fill="#F4A261" font-family="Plus Jakarta Sans, sans-serif">Step 3: Set Source to "main" branch → click Save</text>
+      </svg>
+    </div>
+
+    <ol class="click-list">
+      <li>Inside your repository, click the <span class="click-target">Settings</span> tab. It is in the row of tabs near the top of the page (after Code, Issues, Pull requests...).</li>
+      <li>On the Settings page, look at the left sidebar. Scroll down until you see <span class="click-target">Pages</span>. Click it.</li>
+      <li>Under <strong>Build and deployment → Source</strong>, click the dropdown and select <span class="click-target">Deploy from a branch</span>.</li>
+      <li>Under <strong>Branch</strong>, click the first dropdown and select <span class="click-target">main</span>.</li>
+      <li>The second dropdown should say <span class="click-target">/ (root)</span>. Leave it as is.</li>
+      <li>Click the <span class="click-target green">Save</span> button.</li>
+      <li>The page will refresh. After about 1–2 minutes, a green box will appear at the top saying: <em>"Your site is live at https://YOURUSERNAME.github.io"</em></li>
+      <li>Click that link. Your website is now live on the internet! 🌍 (It will show a blank or basic page for now — we will add content in the next step.)</li>
+    </ol>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Patience Required:</strong> After clicking Save, it can take up to 2 minutes for GitHub to deploy your site. If the green box doesn't appear immediately, wait 2 minutes and refresh the page. Do not click Save multiple times.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2 DIVIDER -->
+<div class="module-divider"><div class="module-label" style="background:#2EC4B6">Module 2 — Building Your Website</div></div>
+
+<!-- STEP 4: BUILD WITH AI -->
+<div class="step-card" id="step4">
+  <div class="step-header" style="background: linear-gradient(135deg, #2EC4B6, #1a8a82)">
+    <div class="step-num">4</div>
+    <div class="step-title">Build Your Training Portal Page Using AI</div>
+    <div class="step-badge">~15 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">You do not need to write code from scratch. You will ask AI to write it for you, then upload it to GitHub. This is prompt engineering in action.</p>
+
+    <div class="callout info">
+      <div class="callout-icon">🤖</div>
+      <div><strong>Which AI to use?</strong> Use any of the following: Claude (claude.ai), ChatGPT (chat.openai.com), or GitHub Copilot (built into GitHub). All three can write excellent HTML code. Claude and ChatGPT are free to use on their basic plans.</div>
+    </div>
+
+    <p style="font-size:14px;color:#4A5568;margin:16px 0 8px;font-weight:600;">Copy and paste this prompt into Claude or ChatGPT:</p>
+    <div class="prompt-box">
+      <div class="prompt-label">📋 Your AI Prompt — Copy This Exactly</div>
+      <div class="prompt-text">
+        Write me a complete professional HTML page for a training institute called [REPLACE WITH YOUR INSTITUTE NAME]. The page should have: (1) a navigation bar with links to Home, Courses, About, and Contact; (2) a hero section with a bold headline and a "Enroll Now" button; (3) a section showing three course cards — one for AI Fundamentals, one for Data Science, and one for Robotics; (4) a footer with contact information. Use modern CSS inside the same file (no external files). Make it fully responsive for mobile phones. Use a professional blue and white colour scheme. Include hover effects on the buttons and course cards. Make it look like a real Nigerian educational institution website.
+      </div>
+    </div>
+
+    <ol class="click-list">
+      <li>Go to <strong>claude.ai</strong> or <strong>chat.openai.com</strong> in a new browser tab. Log in or create a free account.</li>
+      <li>Copy the prompt above (after replacing [YOUR INSTITUTE NAME] with your actual institute name).</li>
+      <li>Paste it into the AI chat and press Enter. Wait about 30 seconds.</li>
+      <li>The AI will generate a complete HTML file. You will see a large block of code starting with <code style="background:#f0f0f0;padding:1px 6px;border-radius:3px">&lt;!DOCTYPE html&gt;</code></li>
+      <li>Click the <span class="click-target">Copy</span> button (usually appears at the top of the code block). All the code is now in your clipboard.</li>
+      <li>Go back to GitHub and open your repository.</li>
+      <li>Click the <span class="click-target">Add file</span> button, then click <span class="click-target">Create new file</span>.</li>
+      <li>In the filename box at the top, type exactly: <strong>index.html</strong></li>
+      <li>Click inside the large text area below and paste your code (Ctrl+V or Cmd+V).</li>
+      <li>Scroll to the bottom and click <span class="click-target green">Commit changes</span>.</li>
+      <li>A dialog box appears. Leave everything as is. Click <span class="click-target green">Commit changes</span> again.</li>
+      <li>Wait 1–2 minutes, then visit <strong>https://YOURUSERNAME.github.io</strong> to see your live website!</li>
+    </ol>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Not happy with the design?</strong> Simply go back to the AI and say: "Make the hero section bigger and use a green accent colour instead of blue." The AI will regenerate the code. Repeat until you are satisfied. This is iterative design — the same way professional developers work.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5: DOMAIN -->
+<div class="step-card" id="step5">
+  <div class="step-header" style="background: linear-gradient(135deg, #1a8a82, #0d5e5a)">
+    <div class="step-num">5</div>
+    <div class="step-title">Attach a Custom Domain Name</div>
+    <div class="step-badge">~10 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Your site works at <em>yourusername.github.io</em> — but for a professional institution, you want something like <em>rain-institute.edu.ng</em> or <em>mytraining.ng</em>. Here is how to get one and connect it.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <tr>
+          <th>Where to Buy</th>
+          <th>Good For</th>
+          <th>Price (Approx)</th>
+          <th>Website</th>
+        </tr>
+        <tr>
+          <td>Whogohost</td>
+          <td>.com.ng, .ng, .com domains</td>
+          <td class="free">₦3,000 – ₦7,000/year</td>
+          <td>whogohost.com</td>
+        </tr>
+        <tr>
+          <td>QServers</td>
+          <td>.com.ng Nigerian domains</td>
+          <td class="free">₦2,500 – ₦5,000/year</td>
+          <td>qservers.net</td>
+        </tr>
+        <tr>
+          <td>GoDaddy</td>
+          <td>International .com domains</td>
+          <td class="paid">$10 – $15/year</td>
+          <td>godaddy.com</td>
+        </tr>
+      </table>
+    </div>
+
+    <ol class="click-list">
+      <li>Go to <strong>whogohost.com</strong> (recommended for Nigerian institutions). Search for your desired domain name in the search box.</li>
+      <li>Select your domain and complete the purchase. You will need to create an account and pay via card, bank transfer, or USSD.</li>
+      <li>Once purchased, log into Whogohost. Find your domain in <span class="click-target">My Domains</span>. Click <span class="click-target">Manage DNS</span>.</li>
+      <li>Add a new DNS record. Type: <strong>CNAME</strong>. Name: <strong>www</strong>. Value: <strong>YOURUSERNAME.github.io</strong>. Click Save.</li>
+      <li>Add another record. Type: <strong>A</strong>. Name: <strong>@</strong>. Value: <strong>185.199.108.153</strong>. Click Save. (This is GitHub's server address.)<sup style="color:#00AEEF">[3]</sup></li>
+      <li>Go back to GitHub → your repository → Settings → Pages.</li>
+      <li>Under <strong>Custom domain</strong>, type your new domain name (e.g., <em>www.rain-institute.ng</em>). Click <span class="click-target green">Save</span>.</li>
+      <li>GitHub will verify your domain. This can take 10–30 minutes. Once verified, a green tick will appear and your custom domain is live!</li>
+    </ol>
+  </div>
+</div>
+
+<!-- MODULE 3 DIVIDER -->
+<div class="module-divider"><div class="module-label" style="background:#F4A261">Module 3 — Backend Server</div></div>
+
+<!-- STEP 6: RENDER -->
+<div class="step-card" id="step6">
+  <div class="step-header" style="background: linear-gradient(135deg, #F4A261, #c07a3a)">
+    <div class="step-num">6</div>
+    <div class="step-title">Create a Render Account — Your Free Server</div>
+    <div class="step-badge">~5 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Your GitHub Pages site is just the front door — the beautiful public website. The <strong>backend server</strong> is what handles student logins, stores data, processes payments, and connects to AI. Render hosts your server for free.<sup style="color:#00AEEF">[4]</sup></p>
+
+    <div class="callout info">
+      <div class="callout-icon">ℹ️</div>
+      <div><strong>Why Render?</strong> Render is a cloud hosting platform that is free for basic use, very easy to set up, and automatically re-deploys your server every time you update your code on GitHub. No server management required. No monthly fees on the free tier.</div>
+    </div>
+
+    <ol class="click-list">
+      <li>Go to <strong>render.com</strong> in your browser.</li>
+      <li>Click the <span class="click-target green">Get Started for Free</span> button.</li>
+      <li>Click <span class="click-target">Continue with GitHub</span>. This is the easiest option — it links Render directly to your GitHub account so they can talk to each other.</li>
+      <li>GitHub will ask you to confirm. Click <span class="click-target green">Authorize Render</span>.</li>
+      <li>You are now inside the Render dashboard. It will look empty — that is fine. You will add your first service in the next step.</li>
+    </ol>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Important — Free Tier Limitation:</strong> On Render's free tier, your server "sleeps" after 15 minutes of inactivity. The first request after sleep takes about 30 seconds to respond. For a training portal with regular use, this is acceptable. If you need it always-on, the paid tier starts at about $7/month.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7: CONNECT RENDER TO GITHUB -->
+<div class="step-card" id="step7">
+  <div class="step-header" style="background: linear-gradient(135deg, #c07a3a, #8a5216)">
+    <div class="step-num">7</div>
+    <div class="step-title">Connect Render to GitHub — Auto-Deploy Your Server</div>
+    <div class="step-badge">~10 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">This is the magic step. Once connected, every time you push new code to GitHub, Render automatically updates your live server — no manual uploading required. Here is how to set it up.</p>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div><strong>Before this step:</strong> You need to have your server code in a GitHub repository. In Step 10, we will use AI to write the server code. For now, create a <strong>second private repository</strong> on GitHub called <strong>training-portal-backend</strong>. This is separate from your website repository.</div>
+    </div>
+
+    <div class="browser-wrap">
+      <div class="browser-label">Render Dashboard — Creating a New Web Service</div>
+      <svg width="100%" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="720" height="360" fill="#f8fafc"/>
+        <!-- Render sidebar -->
+        <rect x="0" y="0" width="200" height="360" fill="#0f172a"/>
+        <text x="20" y="36" font-size="14" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">render</text>
+        <text x="20" y="80" font-size="11" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Dashboard</text>
+        <text x="20" y="100" font-size="11" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Services</text>
+        <text x="20" y="120" font-size="11" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Databases</text>
+        <text x="20" y="140" font-size="11" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Environment</text>
+
+        <!-- Main area -->
+        <text x="230" y="50" font-size="18" fill="#0f172a" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">New Web Service</text>
+
+        <!-- Connect repo section -->
+        <rect x="230" y="66" width="460" height="80" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="250" y="90" font-size="12" fill="#0f172a" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Connect a repository</text>
+        <text x="250" y="108" font-size="10" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">GitHub</text>
+        <!-- Repo list -->
+        <rect x="250" y="116" width="420" height="22" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="262" y="131" font-size="10" fill="#0f172a" font-family="Plus Jakarta Sans, sans-serif">drAyoolaRAIN / training-portal-backend</text>
+        <rect x="620" y="118" width="48" height="18" rx="4" fill="#6366f1"/>
+        <text x="644" y="130" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Connect</text>
+        <rect x="620" y="118" width="48" height="18" rx="4" fill="none" stroke="#00AEEF" stroke-width="2" stroke-dasharray="3 2"/>
+
+        <!-- Settings section -->
+        <rect x="230" y="160" width="460" height="150" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="250" y="183" font-size="12" fill="#0f172a" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Service Settings</text>
+        <!-- Name field -->
+        <text x="250" y="206" font-size="10" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Name</text>
+        <rect x="250" y="210" width="200" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="260" y="226" font-size="10" fill="#0f172a" font-family="Plus Jakarta Sans, sans-serif">training-portal-api</text>
+        <!-- Region -->
+        <text x="250" y="250" font-size="10" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Region</text>
+        <rect x="250" y="254" width="200" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="260" y="270" font-size="10" fill="#0f172a" font-family="Plus Jakarta Sans, sans-serif">Frankfurt (EU) ▾  ← closest to Nigeria</text>
+        <!-- Environment -->
+        <text x="250" y="294" font-size="10" fill="#64748b" font-family="Plus Jakarta Sans, sans-serif">Environment</text>
+        <rect x="250" y="298" width="200" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <text x="260" y="314" font-size="10" fill="#0f172a" font-family="Plus Jakarta Sans, sans-serif">Python 3 ▾</text>
+        <!-- Deploy button -->
+        <rect x="530" y="286" width="140" height="32" rx="6" fill="#6366f1"/>
+        <text x="600" y="306" text-anchor="middle" font-size="11" fill="white" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Create Web Service</text>
+        <rect x="530" y="286" width="140" height="32" rx="6" fill="none" stroke="#F4A261" stroke-width="2.5" stroke-dasharray="4 2"/>
+        <text x="530" y="336" font-size="10" fill="#F4A261" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">← CLICK THIS TO DEPLOY</text>
+      </svg>
+    </div>
+
+    <ol class="click-list">
+      <li>In the Render dashboard, click the <span class="click-target green">New +</span> button in the top right.</li>
+      <li>Select <span class="click-target">Web Service</span> from the dropdown.</li>
+      <li>Under "Connect a repository," you will see your GitHub repositories listed. Click <span class="click-target">Connect</span> next to your <strong>training-portal-backend</strong> repository.</li>
+      <li>Fill in the <strong>Name</strong> field: type something like <strong>training-portal-api</strong>.</li>
+      <li>Set <strong>Region</strong> to <span class="click-target">Frankfurt (EU Central)</span> — this is geographically closest to Nigeria and will give the fastest response times.</li>
+      <li>Set <strong>Environment</strong> to <span class="click-target">Python 3</span>.</li>
+      <li>Set <strong>Build Command</strong> to: <code style="background:#f0f0f0;padding:1px 6px;border-radius:3px;font-size:12px">pip install -r requirements.txt</code></li>
+      <li>Set <strong>Start Command</strong> to: <code style="background:#f0f0f0;padding:1px 6px;border-radius:3px;font-size:12px">python app.py</code></li>
+      <li>Scroll to the bottom and select the <span class="click-target">Free</span> plan.</li>
+      <li>Click <span class="click-target green">Create Web Service</span>. Render will begin deploying. This takes 2–5 minutes the first time.</li>
+      <li>Once deployed, you will see a green <strong>"Live"</strong> badge and a URL like <em>training-portal-api.onrender.com</em>. This is your server's address.</li>
+    </ol>
+
+    <div class="callout important">
+      <div class="callout-icon">🔴</div>
+      <div><strong>Setting Environment Variables (Secrets):</strong> Your server needs secret keys for the database, email, and payments. Never put these in your code. In Render, click <span class="click-target">Environment</span> on the left sidebar of your service, then click <span class="click-target">Add Environment Variable</span> for each secret. We will add these in the steps below.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 8: NEON DATABASE -->
+<div class="step-card" id="step8">
+  <div class="step-header" style="background: linear-gradient(135deg, #3ecf8e, #1a8a5a)">
+    <div class="step-num">8</div>
+    <div class="step-title">Set Up Your Database with Neon</div>
+    <div class="step-badge">~8 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Your database is where all your data lives — student accounts, course enrollments, assignment submissions, payment records, and grades. Neon provides free PostgreSQL database hosting that connects easily to your Render server.<sup style="color:#00AEEF">[5]</sup></p>
+
+    <ol class="click-list">
+      <li>Go to <strong>neon.tech</strong> in your browser. Click <span class="click-target green">Sign Up Free</span>.</li>
+      <li>Sign up with your GitHub account (recommended — click <span class="click-target">Continue with GitHub</span>).</li>
+      <li>Neon will ask you to create a project. In the <strong>Project name</strong> field, type: <strong>training-portal</strong>. Click <span class="click-target green">Create project</span>.</li>
+      <li>Neon will create your database and show you a <strong>Connection string</strong>. It looks like: <code style="background:#f0f0f0;padding:1px 6px;border-radius:3px;font-size:11px">postgresql://user:password@ep-xxxx.eu-central-1.aws.neon.tech/neondb</code></li>
+      <li>Click the <span class="click-target">Copy</span> button next to this connection string. Keep it safe — this is your database address.</li>
+      <li>Go back to Render → your web service → <span class="click-target">Environment</span>.</li>
+      <li>Click <span class="click-target">Add Environment Variable</span>. In the <strong>Key</strong> field type: <strong>DATABASE_URL</strong>. In the <strong>Value</strong> field, paste the connection string you copied from Neon.</li>
+      <li>Click <span class="click-target green">Save Changes</span>. Your server now knows how to connect to your database.</li>
+    </ol>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Neon Free Tier:</strong> The free tier includes 512MB storage and enough compute for a training institute with hundreds of students. You can store thousands of student records, thousands of assignments, and years of data within this limit. When you outgrow it, upgrading costs about $19/month.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 4 DIVIDER -->
+<div class="module-divider"><div class="module-label" style="background:#7B2D8B">Module 4 — Services & AI</div></div>
+
+<!-- STEP 9: MAILTRAP -->
+<div class="step-card" id="step9">
+  <div class="step-header" style="background: linear-gradient(135deg, #7B2D8B, #4a1256)">
+    <div class="step-num">9</div>
+    <div class="step-title">Add Email with Mailtrap</div>
+    <div class="step-badge">~5 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Your portal needs to send emails — welcome messages when students register, password reset links, assignment feedback notifications. Mailtrap provides a free email service for exactly this purpose.</p>
+
+    <ol class="click-list">
+      <li>Go to <strong>mailtrap.io</strong>. Click <span class="click-target green">Sign Up Free</span>.</li>
+      <li>After logging in, click <span class="click-target">Email Sending</span> in the left sidebar, then click <span class="click-target">Sending Domains</span>.</li>
+      <li>Click <span class="click-target">Add Domain</span>. Enter your domain name (e.g., rain-institute.ng). Follow the instructions to verify it — this involves adding DNS records in Whogohost (similar to what you did for GitHub Pages).</li>
+      <li>Once verified, click <span class="click-target">SMTP/API Settings</span>. You will see your SMTP credentials: Host, Port, Username, and Password.</li>
+      <li>Go back to Render → your service → Environment. Add these environment variables:
+        <ul style="margin-top:8px;margin-left:20px;font-size:13px;color:#4A5568;">
+          <li style="margin-bottom:4px"><strong>MAIL_HOST</strong> = smtp.mailtrap.io</li>
+          <li style="margin-bottom:4px"><strong>MAIL_PORT</strong> = 587</li>
+          <li style="margin-bottom:4px"><strong>MAIL_USER</strong> = (your Mailtrap username)</li>
+          <li style="margin-bottom:4px"><strong>MAIL_PASS</strong> = (your Mailtrap password)</li>
+        </ul>
+      </li>
+      <li>Click <span class="click-target green">Save Changes</span>. Your server can now send emails.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- STEP 10: FLASK SERVER -->
+<div class="step-card" id="step10">
+  <div class="step-header" style="background: linear-gradient(135deg, #5a2070, #361240)">
+    <div class="step-num">10</div>
+    <div class="step-title">Build Your Server with AI Prompt Engineering</div>
+    <div class="step-badge">~20 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Now we use AI to write the actual server code. You will prompt Claude or ChatGPT to write a complete Python Flask server. You do not need to understand every line — you need to understand what it does and be able to modify it.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-label">📋 Server Code Prompt — Copy and Paste into Claude/ChatGPT</div>
+      <div class="prompt-text">
+        Write me a complete Python Flask web server for a training management system. Use PostgreSQL with psycopg2. The server must have these endpoints:<br><br>
+        POST /api/register — accepts email, password, full_name. Creates a new student account. Sends a welcome email via SMTP. Returns success or error JSON.<br><br>
+        POST /api/login — accepts email and password. Returns a JWT token if valid, or an error.<br><br>
+        POST /api/forgot-password — accepts email. Generates a reset token, stores it, and sends a reset email.<br><br>
+        GET /api/dashboard — requires JWT token in Authorization header. Returns student profile and their enrolled courses.<br><br>
+        GET /api/courses — returns all available courses as JSON.<br><br>
+        Use environment variables for: DATABASE_URL, JWT_SECRET, MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS. Include full error handling. The server should run on port 5000. Include a requirements.txt file listing all dependencies.
+      </div>
+    </div>
+
+    <ol class="click-list">
+      <li>Copy the prompt above. Paste it into Claude or ChatGPT. Press Enter.</li>
+      <li>The AI will generate two files: <strong>app.py</strong> (the server) and <strong>requirements.txt</strong> (the list of packages needed).</li>
+      <li>In your <strong>training-portal-backend</strong> GitHub repository, click <span class="click-target">Add file</span> → <span class="click-target">Create new file</span>.</li>
+      <li>Name it <strong>app.py</strong>. Paste the server code. Click <span class="click-target green">Commit changes</span>.</li>
+      <li>Create another new file. Name it <strong>requirements.txt</strong>. Paste the requirements content. Click <span class="click-target green">Commit changes</span>.</li>
+      <li>Go to Render. Your service will automatically detect the new code and begin redeploying. Watch the <strong>Logs</strong> tab — within 2-3 minutes you should see "Server running on port 5000".</li>
+    </ol>
+
+    <div class="callout important">
+      <div class="callout-icon">🔴</div>
+      <div><strong>Add JWT_SECRET to Render Environment:</strong> Go to Render → your service → Environment. Add: <strong>JWT_SECRET</strong> = any long random string of letters and numbers (e.g., "Rain2026SecureKey$xK92mP!"). This is the key that signs your login tokens. Keep it secret and never share it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 11: PAYSTACK -->
+<div class="step-card" id="step11">
+  <div class="step-header" style="background: linear-gradient(135deg, #E63946, #a01c26)">
+    <div class="step-num">11</div>
+    <div class="step-title">Add Nigerian Payments with Paystack</div>
+    <div class="step-badge">~10 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">Paystack is Nigeria's leading payment gateway. It accepts card payments, bank transfers, USSD (no internet needed on student's phone), and mobile money. You can start receiving payments with a personal account — no business registration required to get started.<sup style="color:#00AEEF">[6]</sup></p>
+
+    <ol class="click-list">
+      <li>Go to <strong>paystack.com</strong>. Click <span class="click-target green">Create a Free Account</span>.</li>
+      <li>Fill in your details. Use your institute's email. Click <span class="click-target green">Create account</span>.</li>
+      <li>Check your email for a verification link. Click it to verify your account.</li>
+      <li>Once inside the Paystack dashboard, click <span class="click-target">Settings</span> → <span class="click-target">API Keys & Webhooks</span>.</li>
+      <li>You will see two keys: <strong>Test Secret Key</strong> and <strong>Live Secret Key</strong>. For testing, use the Test key. When ready to go live, switch to the Live key.</li>
+      <li>Copy your <strong>Test Secret Key</strong> (starts with <code>sk_test_</code>).</li>
+      <li>In Render → Environment, add: <strong>PAYSTACK_SECRET_KEY</strong> = paste your key. Click <span class="click-target green">Save Changes</span>.</li>
+      <li>Ask AI to add payment integration to your server: <em>"Add a Paystack payment endpoint to my Flask server. POST /api/enroll — accepts course_id and student JWT token. Creates a Paystack transaction for the course fee and returns the payment URL for the student to complete."</em></li>
+    </ol>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Paystack Fees:</strong> Paystack charges 1.5% per transaction (capped at ₦2,000) for local cards. For international cards, it is 3.9% + ₦100. There are no monthly fees. You only pay when you receive money.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 12: CLAUDE API -->
+<div class="step-card" id="step12">
+  <div class="step-header" style="background: linear-gradient(135deg, #4a1256, #7B2D8B)">
+    <div class="step-num">12</div>
+    <div class="step-title">AI Assignment Marking with Claude API — The Centrepiece</div>
+    <div class="step-badge">~20 minutes</div>
+  </div>
+  <div class="step-body">
+    <p style="color:#4A5568;font-size:14px;line-height:1.7;margin-bottom:18px;">This is the most powerful feature of your portal. A lecturer with 300 students cannot mark 300 essays individually and return timely, personalised feedback. Claude AI can — and it does it in seconds, consistently, at any hour of the day.</p>
+
+    <div class="callout info">
+      <div class="callout-icon">🤖</div>
+      <div><strong>How It Works:</strong> A student submits their essay through your portal. Your Render server automatically sends the essay to Claude's API with a grading rubric you've written. Claude marks it and returns a structured score and written feedback. Your server saves the result and shows the student their grade immediately. No lecturer involvement required for routine marking.</div>
+    </div>
+
+    <!-- Flow diagram -->
+    <div class="arch-wrap">
+      <p style="font-size:12px;font-weight:700;color:#718096;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">AI Marking Flow</p>
+      <svg width="100%" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#7B2D8B" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+        <rect x="10" y="35" width="110" height="50" rx="10" fill="#f3e8f6" stroke="#7B2D8B" stroke-width="1.5"/>
+        <text x="65" y="57" text-anchor="middle" fill="#4a0f5a" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">👩‍🎓 Student</text>
+        <text x="65" y="72" text-anchor="middle" fill="#4a0f5a" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Submits Essay</text>
+
+        <line x1="122" y1="60" x2="168" y2="60" stroke="#7B2D8B" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+        <rect x="170" y="35" width="120" height="50" rx="10" fill="#fef3e8" stroke="#F4A261" stroke-width="1.5"/>
+        <text x="230" y="57" text-anchor="middle" fill="#8a5216" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">🖥 Render Server</text>
+        <text x="230" y="72" text-anchor="middle" fill="#8a5216" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Sends to Claude API</text>
+
+        <line x1="292" y1="60" x2="338" y2="60" stroke="#7B2D8B" stroke-width="1.5" marker-end="url(#arr3)"/>
+        <text x="315" y="50" text-anchor="middle" fill="#7B2D8B" font-size="8" font-family="Plus Jakarta Sans, sans-serif">+rubric</text>
+
+        <rect x="340" y="25" width="140" height="70" rx="10" fill="#4a0f5a" stroke="#7B2D8B" stroke-width="1.5"/>
+        <text x="410" y="51" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">🤖 Claude AI</text>
+        <text x="410" y="66" text-anchor="middle" fill="#d4b0e8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Reads Essay + Rubric</text>
+        <text x="410" y="80" text-anchor="middle" fill="#d4b0e8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Returns JSON Score</text>
+
+        <line x1="482" y1="60" x2="528" y2="60" stroke="#7B2D8B" stroke-width="1.5" marker-end="url(#arr3)"/>
+        <text x="505" y="50" text-anchor="middle" fill="#7B2D8B" font-size="8" font-family="Plus Jakarta Sans, sans-serif">JSON</text>
+
+        <rect x="530" y="35" width="120" height="50" rx="10" fill="#e8faf8" stroke="#2EC4B6" stroke-width="1.5"/>
+        <text x="590" y="57" text-anchor="middle" fill="#0a5a47" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">📊 Dashboard</text>
+        <text x="590" y="72" text-anchor="middle" fill="#0a5a47" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Score + Feedback Shown</text>
+      </svg>
+    </div>
+
+    <ol class="click-list">
+      <li>Go to <strong>console.anthropic.com</strong>. Create a free account or log in.</li>
+      <li>Click <span class="click-target">API Keys</span> in the left sidebar. Click <span class="click-target green">Create Key</span>.</li>
+      <li>Give your key a name (e.g., "training-portal"). Copy the key that appears — it starts with <code>sk-ant-</code>. <strong>Save it immediately</strong> — Anthropic only shows it once.</li>
+      <li>In Render → Environment, add: <strong>CLAUDE_API_KEY</strong> = paste your key. Click <span class="click-target green">Save Changes</span>.</li>
+      <li>Ask AI to add marking to your Flask server using this prompt:</li>
+    </ol>
+
+    <div class="prompt-box">
+      <div class="prompt-label">📋 AI Marking Integration Prompt</div>
+      <div class="prompt-text">
+        Add an assignment submission and AI marking endpoint to my Flask server. POST /api/submit-assignment — accepts: assignment_id, student_id (from JWT), and essay_text. The server should call the Anthropic Claude API (claude-sonnet-4-20250514 model) with this system prompt:<br><br>
+        "You are a university lecturer at a Nigerian institution. Mark the following student essay strictly and fairly. Return ONLY a valid JSON object with these fields: content_score (0-10, relevance and accuracy), argument_score (0-10, quality of reasoning), language_score (0-10, grammar and clarity), total_score (sum out of 30), grade (A/B/C/D/F), and feedback (2-3 sentences of constructive written feedback addressing the student directly)."<br><br>
+        Save the result to the database. Return the score and feedback to the student. Handle API errors gracefully.
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div><strong>Claude API Cost:</strong> Claude Sonnet 4 costs approximately $3 per million input tokens and $15 per million output tokens.<sup style="color:#00AEEF">[7]</sup> A typical 500-word student essay uses about 700 tokens. For 300 students, that is roughly 210,000 tokens — about ₦250–₦400 total to mark an entire cohort's assignments. This is significantly cheaper than any human marking arrangement at scale.</div>
+    </div>
+
+    <div style="background:#1a1a2e;border-radius:12px;padding:20px 24px;margin:16px 0;">
+      <div style="color:#00AEEF;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;">Sample AI Marking Response — What Claude Returns</div>
+      <pre style="color:#e6edf3;font-size:12px;line-height:1.8;overflow-x:auto">{
+  "content_score": 8,
+  "argument_score": 6,
+  "language_score": 7,
+  "total_score": 21,
+  "grade": "B",
+  "feedback": "Your essay demonstrates a strong understanding of AI
+  applications in Nigerian agriculture, particularly your analysis
+  of price discovery platforms. Your argument would be strengthened
+  by specific examples of existing initiatives like Farmcrowdy or
+  Hello Tractor. Language use is generally clear, though more
+  precise technical vocabulary would elevate your discussion."
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- EXPANSION -->
+<div class="section" id="expand">
+  <div class="section-header">
+    <div class="section-icon" style="background:#e8f0fe">🚀</div>
+    <h2>Expanding What You Have Built</h2>
+  </div>
+  <p class="section-desc">Your portal is now fully functional. Here is what to build next, in order of impact:</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #00AEEF;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">📊</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">Adaptive Learning Paths</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">Based on quiz performance, AI recommends the next module best suited to each student's level. No two students follow exactly the same path.</div>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #2EC4B6;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">📋</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">QR Code Attendance</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">Students scan a QR code to check in. The server records time-stamped attendance. AI flags students below 70% attendance for early intervention.</div>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #F4A261;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">🔍</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">Plagiarism Detection</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">Before grading, AI checks each submission against previous submissions and flags similarity above 70% for lecturer review.</div>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #7B2D8B;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">💰</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">Fee Tracking Dashboard</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">Live dashboard showing paid vs outstanding students. Automated WhatsApp or SMS reminders sent to those with unpaid fees.</div>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #E63946;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">📝</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">WAEC/JAMB Practice Engine</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">AI generates unlimited practice questions in any subject. Marks responses instantly. Provides full explanations for wrong answers. Never runs out of questions.</div>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px;border-top:4px solid #264653;box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+      <div style="font-size:20px;margin-bottom:8px">📈</div>
+      <div style="font-weight:700;color:#0A1628;margin-bottom:6px;font-size:14px">Analytics Dashboard</div>
+      <div style="font-size:13px;color:#4A5568;line-height:1.6">Department-level charts showing cohort performance trends, course completion rates, and at-risk student groups. Export reports as PDF.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTNOTES -->
+<div class="footnotes" id="footnotes">
+  <h3>Footnotes & References</h3>
+  <div class="footnote-item">
+    <div class="footnote-num">[1]</div>
+    <div>GitHub was founded in 2008 and acquired by Microsoft in 2018 for $7.5 billion. As of 2024, it hosts over 420 million repositories and is used by over 100 million developers worldwide. The free tier (GitHub Free) includes unlimited public and private repositories, unlimited collaborators, and GitHub Pages hosting. Source: github.com/pricing</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[2]</div>
+    <div>GitHub Education offers verified educators and students access to GitHub Pro for free, including advanced collaboration tools, private repositories with unlimited collaborators, and GitHub Codespaces. Apply at education.github.com with an institutional email address.</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[3]</div>
+    <div>GitHub's four IP addresses for A records (required for apex domain configuration): 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153. Adding all four provides redundancy. Source: docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[4]</div>
+    <div>Render's free tier ("Free Instance") provides 750 hours of compute per month (enough for one always-on service), 100GB bandwidth, and automatic TLS certificates. Limitation: free services sleep after 15 minutes of inactivity, with a ~30-second cold start on next request. Starter plan at $7/month removes this limitation. Source: render.com/pricing</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[5]</div>
+    <div>Neon is a serverless PostgreSQL platform built on AWS. The free tier includes 0.5 GB storage, 1 project, 10 branches, and 191.9 compute hours per month. PostgreSQL is an open-source relational database system with 35+ years of active development, widely regarded as the most feature-rich free database available. Source: neon.tech/pricing</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[6]</div>
+    <div>Paystack was founded in Lagos, Nigeria in 2015 and acquired by Stripe in 2020 for approximately $200 million. It processes payments for over 200,000 businesses across Africa. Its API supports card, bank transfer, USSD, QR code, and mobile money payments. Individual (personal) accounts can receive up to ₦10 million per transaction. Source: paystack.com/pricing</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[7]</div>
+    <div>Claude Sonnet pricing as of April 2026: $3.00 per million input tokens, $15.00 per million output tokens. A 500-word essay (~700 tokens input) with a 150-word feedback response (~200 tokens output) costs approximately $0.000003 per student. For a cohort of 300 students, total marking cost is approximately $0.09 (less than ₦150). Pricing subject to change. Source: anthropic.com/pricing</div>
+  </div>
+  <div class="footnote-item">
+    <div class="footnote-num">[8]</div>
+    <div>This training manual was produced by Robotics and Artificial Intelligence Nigeria (RAIN) for the 5th National Summit on Artificial Intelligence and Robotics, organised by the Nigeria Computer Society (NCS), Katsina, April 2026. All tools referenced are independently operated and RAIN receives no commercial consideration from their mention. Recommendations are made purely on educational merit and fitness for purpose in the Nigerian context.</div>
+  </div>
+
+  <div style="margin-top:32px;padding:24px;background:#0A1628;border-radius:12px;color:white;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="background:#00AEEF;color:white;font-weight:800;font-size:18px;padding:6px 12px;border-radius:6px;">RAIN</div>
+      <div>
+        <div style="font-weight:700;font-size:15px;">Robotics and Artificial Intelligence Nigeria</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">Training Manual · NCS National Summit · Katsina · April 2026 · Dr. Olusola Ayoola MNCS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end main -->
+
+<script>
+// Highlight active nav item on scroll
+const sections = document.querySelectorAll('[id]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navItems.forEach(n => {
+    n.classList.remove('active');
+    if (n.getAttribute('href') === '#' + current) n.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
