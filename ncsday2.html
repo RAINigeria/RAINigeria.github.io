@@ -545,8 +545,12 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); backgro
 <!-- SIDEBAR NAVIGATION -->
 <nav class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-badge">RAIN</div>
-    <div class="logo-sub">Training Manual</div>
+    <img src="https://scholarship.rainigeria.com/static/rainlogo.jpg"
+         alt="RAIN — Robotics and Artificial Intelligence Nigeria"
+         style="width:160px;max-width:90%;border-radius:8px;display:block;margin-bottom:10px;background:white;padding:4px;"
+         onerror="this.style.display='none';document.getElementById('rain-fallback').style.display='inline-block'"/>
+    <div class="logo-badge" id="rain-fallback" style="display:none">RAIN</div>
+    <div class="logo-sub">Official Training Manual</div>
   </div>
 
   <div class="sidebar-label">Overview</div>
@@ -659,7 +663,12 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); backgro
     </div>
   </div>
   <div class="cover-presenter">
-    <div class="presenter-avatar">OA</div>
+    <div class="presenter-avatar" style="background:white;padding:3px;">
+      <img src="https://scholarship.rainigeria.com/static/rainlogo.jpg"
+           alt="RAIN Logo"
+           style="width:50px;height:50px;object-fit:contain;border-radius:50%;"
+           onerror="this.style.display='none'"/>
+    </div>
     <div class="presenter-info">
       <div class="name">Dr. Olusola Ayoola MNCS</div>
       <div class="role">CEO/Founder · Robotics and Artificial Intelligence Nigeria (RAIN) · Ibadan, Oyo State</div>
@@ -1573,6 +1582,41 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); backgro
   </div>
 </div>
 
+
+<!-- SCHOLARSHIP ADVERTISEMENT -->
+<div style="margin: 50px 0; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12); position: relative;">
+  <div style="background: linear-gradient(135deg, #0A1628 0%, #1F4E79 60%, #0A1628 100%); padding: 32px 36px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 220px;">
+      <img src="https://scholarship.rainigeria.com/static/rainlogo.jpg"
+           alt="RAIN Nigeria"
+           style="height: 48px; object-fit: contain; margin-bottom: 16px; background: white; padding: 4px 8px; border-radius: 6px; display: block;"
+           onerror="this.style.display='none'"/>
+      <div style="color: #00AEEF; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">RAIN Nigeria — Scholarship Programme</div>
+      <div style="color: white; font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 12px; font-family: DM Serif Display, serif;">Invest in Your AI Future.<br>Scholarships Now Open.</div>
+      <div style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; margin-bottom: 20px;">RAIN offers funded training programmes in Artificial Intelligence, Robotics, and Data Science for Nigerian students, educators, and professionals. Applications are open to individuals and institutions across all 36 states.</div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://scholarship.rainigeria.com" target="_blank"
+           style="background: #00AEEF; color: white; font-weight: 700; font-size: 13px; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">
+          Apply Now →
+        </a>
+        <a href="https://scholarship.rainigeria.com" target="_blank"
+           style="background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.3); color: white; font-weight: 600; font-size: 13px; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">
+          Learn More
+        </a>
+      </div>
+    </div>
+    <div style="flex-shrink: 0;">
+      <img src="https://scholarship.rainigeria.com/static/schimag.jpg"
+           alt="RAIN Scholarship Programme"
+           style="width: 260px; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); display: block;"
+           onerror="this.outerHTML=''"/>
+    </div>
+  </div>
+  <div style="background: #00AEEF; padding: 10px 36px; text-align: center;">
+    <span style="color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.5px;">scholarship.rainigeria.com &nbsp;|&nbsp; Robotics and Artificial Intelligence Nigeria &nbsp;|&nbsp; Ibadan, Oyo State</span>
+  </div>
+</div>
+
 <!-- FOOTNOTES -->
 <div class="footnotes" id="footnotes">
   <h3>Footnotes & References</h3>
@@ -1611,7 +1655,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); backgro
 
   <div style="margin-top:32px;padding:24px;background:#0A1628;border-radius:12px;color:white;">
     <div style="display:flex;align-items:center;gap:16px;">
-      <div style="background:#00AEEF;color:white;font-weight:800;font-size:18px;padding:6px 12px;border-radius:6px;">RAIN</div>
+      <img src="https://scholarship.rainigeria.com/static/rainlogo.jpg" alt="RAIN" style="height:48px;background:white;padding:3px 8px;border-radius:6px;object-fit:contain;" onerror="this.outerHTML='<div style=background:#00AEEF;color:white;font-weight:800;font-size:18px;padding:6px 12px;border-radius:6px>RAIN</div>'"/>
       <div>
         <div style="font-weight:700;font-size:15px;">Robotics and Artificial Intelligence Nigeria</div>
         <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">Training Manual · NCS National Summit · Katsina · April 2026 · Dr. Olusola Ayoola MNCS</div>
